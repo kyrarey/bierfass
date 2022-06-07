@@ -1,8 +1,30 @@
-<<<<<<< HEAD
 const express = require('express');
 const router = express.Router();
 const Sequelize = require('sequelize');
 const Op = Sequelize.Op;
+const { Products } = require("../models");
+
+//devuelve productos de la categoria pasada por parametro
+router.get("/productsById/:id", (req, res) => {
+  Products.findAll({ where: { id: req.params.id } })
+    .then((products) => {
+      res.send(products);
+    })
+    .catch((err) => {
+      res.status(400).send(err);
+    });
+});
+
+//devuelve los productos que coinciden con el nombre pasado por parametro
+router.get("/productsByName/:name", (req, res) => {
+  Products.findAll({ where: { name: req.params.name } })
+    .then((products) => {
+      res.send(products);
+    })
+    .catch((err) => {
+      res.status(400).send(err);
+    });
+});
 
 //all products
 router.get('/', (req, res) => {
@@ -59,32 +81,5 @@ router.delete('/', (req, res) => {
     res.sendStatus(202)
   );
 });
-=======
-const express = require("express");
-const router = express.Router();
-const { Products } = require("../models");
 
-//devuelve productos de la categoria pasada por parametro
-router.get("/products/:id", (req, res) => {
-  Products.findAll({ where: { id: req.params.id } })
-    .then((products) => {
-      res.send(products);
-    })
-    .catch((err) => {
-      res.status(400).send(err);
-    });
-});
-
-//devuelve los productos que coinciden con el nombre pasado por parametro
-router.get("/products/:name", (req, res) => {
-  Products.findAll({ where: { name: req.params.name } })
-    .then((products) => {
-      res.send(products);
-    })
-    .catch((err) => {
-      res.status(400).send(err);
-    });
-});
-
->>>>>>> origin/routes-user
 module.exports = router;
