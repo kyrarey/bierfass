@@ -1,0 +1,30 @@
+.card{
+    display: flex;
+    flex-direction: column;
+    width: 400px;
+    padding: 5px;
+    margin: 5px 0;
+    background-color: hsl(181, 77%, 25%);
+    border-radius: 10px;
+    position: relative;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.card:hover {
+    background-color: hsl(181, 77%, 25%);
+    color: black;
+  }
+
+.image{
+    border-radius: 10px;
+}
+
+.content{
+    display: flex;
+}
+
+.title{
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
