@@ -1,10 +1,6 @@
-import React from "react";
-import "./App.css";
-import Navbar from "./components/Navbar/Navbar";
-import Product from "./components/ProductCard/ProductCard";
-import { Route, Routes } from "react-router-dom";
 import React from 'react';
 import './App.css';
+import ProductCard from './components/ProductCard/ProductCard';
 import Header from './components/Header/Header';
 import Navbar from './components/Navbar/Navbar';
 import Account from './components/Account/Account';
