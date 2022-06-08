@@ -11,7 +11,8 @@ ReviewProduct.init({
     },
     rating:{
         type: DataTypes.INTEGER
-    }
+    },
+    
 },{
     sequelize:db,
     modelName: 'reviewProduct'

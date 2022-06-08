@@ -3,8 +3,7 @@ const app = express();
 const db = require('./config/dbConnection');
 const session = require('express-session');
 const bodyParser = require('body-parser');
-//
-const routes = require('./routes');
+const routes = require('./routes/index');
 
 //
 const User = require('./models/Users');
@@ -50,11 +49,6 @@ app.use(
 app.use(passport.initialize());
 app.use(passport.session());
 
-app.use('/api', routes);
-
-app.use((err, req, res, next) => {
-  res.status(500).send(err.message);
-});
 //passport strategy
 
 passport.use(
@@ -91,6 +85,8 @@ passport.serializeUser(function(user, done) {
 passport.deserializeUser(function(id, done) {
   User.findByPk(id).then((user) => done(null, user));
 });
+
+app.use('/api', routes);
 
 const port = 8000;
 
