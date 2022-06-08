@@ -1,17 +1,22 @@
 import React from "react";
-import "./ProductCard.css";
-import { Card } from "@mui/material";
-import { CardActions } from "@mui/material";
-import { CardActionArea } from "@mui/material";
-import { CardContent } from "@mui/material";
-import { CardMedia } from "@mui/material";
-import { Typography } from "@mui/material";
-import { FavoriteIcon } from "@mui/icons-material";
-import { AddShoppingCartIcon } from "@mui/icons-material";
+import "./Product.css";
+
+
+const products = [{
+  name: "Roja Ipa",
+  type: "Roja",
+  size: "450 ml",
+  price: "$250",
+  img: "./AndesIPA.webp",
+  origin: "Argentina",
+  marca: "Andes"
+}]
 
 //ProductCard recibe como parámetro la data
-const ProductCard = () => {
+const Product = () => {
+
   return (
+    <>
     <div>
       <Card className="card">
         <CardActionArea>
@@ -38,7 +43,8 @@ const ProductCard = () => {
         </CardActions>
       </Card>
     </div>
+    </>
   );
 };
 
-export default ProductCard;
+export default Product;

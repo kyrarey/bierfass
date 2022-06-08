@@ -1,8 +1,20 @@
 import React from "react";
 import "./App.css";
 
+import Header from "./components/Header/Header"
 import Navbar from "./components/Navbar/Navbar";
 import ProductCard from "./components/ProductCard/ProductCard"
+import Account from "./components/Account/Account"
+import Cart from "./components/Cart/Cart"
+import Home from "./components/Home/Home"
+import Logout from "./components/Logout/Logout"
+import Reviews from "./components/Reviews/Reviews"
+import Search from "./components/Search/Search"
+import Users from "./components/Users/Users"
+import Footer from "./components/Footer/Footer";
+import Register from "./components/Register/Register";
+import Login from "./components/Login/Login";
+import Product from "./components/Product/Product"
 
 import { Route, Routes } from "react-router-dom";
 
@@ -11,19 +23,7 @@ function App() {
     <>
     <Navbar />
     <Header />
-    <Routes>
-      <Route path="/" element={<Home />} />
-      <Route path="/register" element={<Register />} />
-      <Route path="/login" element={<Login />} />
-      <Route path="/logout" element={<Logout />} />
-      <Route path="/me" element={<Account />} />
-      <Route path="/search" element={<Search />} />
-      <Route path="/cart" element={<Cart />} />
-      <Route path="/product/:id" element={<Product />} />
-      <Route path="/users" element={<Users />} />
-      <Route path="/reviews" element={<Reviews />} />
-      <Footer />
-    </Routes>
+
     </>
   );
 }
