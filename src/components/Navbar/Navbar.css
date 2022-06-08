@@ -1,0 +1,19 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap');
+
+.header {
+    /* background: url(./beer.jpg) no-repeat center;
+    background-size: cover;
+    min-height: 100vh; */
+    font-family: 'Roboto', sans-serif;
+}
+
+.header .welcome {
+    text-align: center;
+    padding: 220px;
+    margin-bottom: 50px;
+    background-color: oldlace;
+}
+
+/* .header .navbar {
+    background-color: transparent !important;
+} */
