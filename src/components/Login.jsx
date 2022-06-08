@@ -1,16 +1,31 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import ReCAPTCHA from "react-google-recaptcha";
 
 const Login = () => {
   const [user, setUser] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const captcha = useRef(null);
+  const [captchaValue, setCaptchaValue] = useState(null);
+
   const navigate = useNavigate();
 
-  const handleSubmit = () => {
+  const onChange = () => {
+    if (captcha.current.getValue()) {
+      setCaptchaValue(true);
+    }
+  };
+
+  const handleSubmit = (e) => {
     e.preventDefault();
+
+    if (captcha.current.getValue()) {
+      setCaptchaValue(true);
+    }
+
     axios
       .post("/login", {
         email: email,
@@ -22,12 +37,14 @@ const Login = () => {
     navigate("/me");
   };
 
+  // const handleBlur
+
   return (
     <div class="container">
-      <div class="col-md-12 login-form pt-5">
-        <h2>Registration form</h2>
+      <div class="col-sm-6 login-form pt-5">
+        <h2>Sign In</h2>
         <form onSubmit={handleSubmit}>
-          <div class="mb-3">
+          <div class="form-group col-md-6 pb-3">
             <label for="Email" class="form-label">
               Email
             </label>
@@ -35,12 +52,13 @@ const Login = () => {
               type="email"
               class="form-control"
               id="Email"
+              placeholder="email"
               onChange={(e) => setEmail(e.target.value)}
               required
             />
           </div>
 
-          <div class="mb-3">
+          <div class="form-group col-md-6 pb-3">
             <label for="Password" class="form-label">
               Password
             </label>
@@ -48,6 +66,7 @@ const Login = () => {
               type="password"
               class="form-control"
               id="Password"
+              placeholder="password"
               onChange={(e) => setPassword(e.target.value)}
               required
             />
@@ -57,6 +76,16 @@ const Login = () => {
             Login
           </button>
         </form>
+        <div class="recaptcha pt-4">
+          <ReCAPTCHA
+            sitekey="6Le-5lUgAAAAAMhhuBnrbEXThYz4cFNhY-txabwp"
+            onChange={onChange}
+            ref={captcha}
+          />
+        </div>
+        <div>
+          {captchaValue === false && <p>Por favor hacé click en el checkbox</p>}
+        </div>
       </div>
     </div>
   );
