@@ -5,7 +5,7 @@ const db = new Sequelize("bierfass", null, null, {
   dialect: "postgres",
   logging: false,
   port: 5433
-  //este puerto es distinto porque en mi computador corre en un puerto diferente postgrest. el de ustedes deberia ser 5232, creo
+  //este puerto es distinto porque en mi computador corre en un puerto diferente postgrest. el de ustedes deberia ser 5432, creo
 });
 
 module.exports = db;

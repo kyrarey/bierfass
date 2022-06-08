@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const Sequelize = require('sequelize');
 const Op = Sequelize.Op;
-const { Products } = require("../models");
+const Products  = require("../models/Product");
 
 //devuelve productos de la categoria pasada por parametro
 router.get("/productsById/:id", (req, res) => {
@@ -39,9 +39,9 @@ router.post('/search', (req, res) => {
 });
 
 //Add product
-router.post('/new', (req, res) => {
+router.post('/', (req, res) => {
   Products.findOne({
-    where: { name: req.body.email, marca: req.body.marca },
+    where: { idProductowner: req.body.idProductowner },
   }).then((result) => {
     if (result === null) {
       Products.create(req.body).then((user) => res.status(201).send(user));

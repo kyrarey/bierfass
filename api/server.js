@@ -3,6 +3,7 @@ const app = express();
 const db = require("./config/dbConnection");
 const session = require("express-session");
 const bodyParser = require("body-parser");
+const routes = require("./routes/index")
 
 
 //
@@ -39,6 +40,8 @@ app.use(
 
 app.use(passport.initialize());
 app.use(passport.session());
+
+
 
 //passport strategy
 
@@ -79,7 +82,7 @@ passport.deserializeUser(function(id, done) {
     .then(user => done(null, user))
 });
 
-
+app.use('/api', routes);
 
 const port = 8000;
 
@@ -88,7 +91,7 @@ const port = 8000;
 
 //coneccion con la base de datos 
 
-db.sync({ force: true }).then(() => {
+db.sync({ force: false }).then(() => {
   app.listen(port, () => {
     console.log("Server running in port", port);
   });

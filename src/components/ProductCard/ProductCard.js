@@ -8,7 +8,7 @@ import { CardMedia } from "@mui/material";
 import { Typography } from "@mui/material";
 import { FavoriteIcon } from "@mui/icons-material";
 import { AddShoppingCartIcon } from "@mui/icons-material";
-
+import ProductReview from "../ProductReview.js/ProductReview";
 //ProductCard recibe como parámetro la data
 const ProductCard = () => {
   return (
@@ -37,6 +37,7 @@ const ProductCard = () => {
           
         </CardActions>
       </Card>
+      <ProductReview></ProductReview>
     </div>
   );
 };

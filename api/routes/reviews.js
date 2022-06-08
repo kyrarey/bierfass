@@ -1,24 +1,28 @@
 const express = require('express');
 const router = express.Router();
+const ReviewProduct = require("../models/ReviewProduct")
 
-//all reviews
-router.get('/:idBeer', (req, res) => {
-  ReviewProduct.findAll({ where: { idBeer: req.params.idBeer } }).then((cart) =>
-    res.send(cart)
+// all reviews
+router.get('/:productId', (req, res) => {
+  ReviewProduct.findAll({ where: { productId: req.params.productId } }).then((cart) =>
+  {  console.log(cart)
+    res.send(cart)}
   );
 });
 
 //send review
-router.get('/:idBeer', (req, res) => {
-  ReviewProduct.findOne({ where: { idBeer: req.params.idBeer } }).then(
-    (result) => {
-      if (result === null) {
-        ReviewProduct.create(req.body).then((user) =>
-          res.status(201).send(user)
-        );
-      } else {
-        res.status(401).send();
-      }
-    }
-  );
-});
+// router.post('/:productId', (req, res) => {
+//   ReviewProduct.findOne({ where: { productId: req.params.productId } }).then(
+//     (result) => {
+//       if (result === null) {
+//         ReviewProduct.create(req.body).then((user) =>
+//           res.status(201).send(user)
+//         );
+//       } else {
+//         res.status(401).send();
+//       }
+//     }
+//   );
+// });
+
+module.exports = router

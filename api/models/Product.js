@@ -16,9 +16,6 @@ Product.init({
   rating: {
     type: DataTypes.INTEGER,
   },
-  reviews: {
-    type: DataTypes.STRING,
-  },
   type: {
     type: DataTypes.STRING,
   },
