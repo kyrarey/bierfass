@@ -13,9 +13,7 @@ import Footer from './components/Footer/Footer';
 import Register from './components/Register/Register';
 import Login from './components/Login/Login';
 import Product from './components/Product/Product';
-
 import { Route, Routes } from 'react-router-dom';
-
 import { GlobalProvider } from './context/globalUserContext';
 
 function App() {

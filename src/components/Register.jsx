@@ -13,7 +13,7 @@ const Register = () => {
   const [email, setEmail] = useState("");
   const navigate = useNavigate();
 
-  const handleSubmit = () => {
+  const handleSubmit = (e) => {
     e.preventDefault();
     axios
       .post("/register", {
@@ -32,10 +32,10 @@ const Register = () => {
 
   return (
     <div class="container">
-      <div class="col-md-12 login-form pt-5">
-        <h2>Registration form</h2>
+      <div class="col-sm-4 login-form pt-5">
+        <h2>Create User</h2>
         <form onSubmit={handleSubmit}>
-          <div class="mb-3">
+          <div class="form-group col-md-6 pb-3">
             <label for="FirstName" class="form-label">
               First Name
             </label>
@@ -43,12 +43,13 @@ const Register = () => {
               type="text"
               class="form-control"
               id="FirstName"
+              placeholder="first name"
               onChange={(e) => setFirstName(e.target.value)}
               required
             />
           </div>
 
-          <div class="mb-3">
+          <div class="form-group col-md-6 pb-3">
             <label for="LastName" class="form-label">
               Last Name
             </label>
@@ -56,12 +57,13 @@ const Register = () => {
               type="text"
               class="form-control"
               id="LastName"
+              placeholder="last name"
               onChange={(e) => setLastName(e.target.value)}
               required
             />
           </div>
 
-          <div class="mb-3">
+          <div class="form-group col-md-6 pb-3">
             <label for="birthdayDate" class="form-label">
               BirthDay
             </label>
@@ -69,12 +71,13 @@ const Register = () => {
               type="text"
               class="form-control"
               id="birthdayDate"
+              placeholder="birthday"
               onChange={(e) => setBirthday(e.target.value)}
               required
             />
           </div>
 
-          <div class="mb-3">
+          <div class="form-group col-md-6 pb-3">
             <label for="Email" class="form-label">
               Email
             </label>
@@ -82,12 +85,13 @@ const Register = () => {
               type="email"
               class="form-control"
               id="Email"
+              placeholder="email"
               onChange={(e) => setEmail(e.target.value)}
               required
             />
           </div>
 
-          <div class="mb-3">
+          <div class="form-group col-md-6 pb-3">
             <label for="Password" class="form-label">
               Password
             </label>
@@ -95,12 +99,13 @@ const Register = () => {
               type="password"
               class="form-control"
               id="Password"
+              placeholder="password"
               onChange={(e) => setPassword(e.target.value)}
               required
             />
           </div>
 
-          <div class="mb-3">
+          <div class="form-group col-md-6 pb-3">
             <label for="confirmPassword" class="form-label">
               Confirm Password
             </label>
@@ -108,6 +113,7 @@ const Register = () => {
               type="password"
               class="form-control"
               id="onfirmPassword"
+              placeholder="password"
               onChange={(e) => setConfPassword(e.target.value)}
               required
             />
