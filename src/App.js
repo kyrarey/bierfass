@@ -3,7 +3,6 @@ import "./App.css";
 
 import Header from "./components/Header/Header"
 import Navbar from "./components/Navbar/Navbar";
-import ProductCard from "./components/ProductCard/ProductCard"
 import Account from "./components/Account/Account"
 import Cart from "./components/Cart/Cart"
 import Home from "./components/Home/Home"
@@ -23,7 +22,19 @@ function App() {
     <>
     <Navbar />
     <Header />
-
+    <Routes>
+      <Route path="/" element={<Home />} />
+      <Route path="/register" element={<Register />} />
+      <Route path="/login" element={<Login />} />
+      <Route path="/logout" element={<Logout />} />
+      <Route path="/me" element={<Account />} />
+      <Route path="/search" element={<Search />} />
+      <Route path="/cart" element={<Cart />} />
+      <Route path="/product/:id" element={<Product />} />
+      <Route path="/users" element={<Users />} />
+      <Route path="/reviews" element={<Reviews />} />
+    </Routes>
+    <Footer />
     </>
   );
 }
