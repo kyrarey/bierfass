@@ -1,8 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=Inconsolata:wght@400;500&family=Itim&family=Lobster+Two&family=Montserrat:wght@500&family=Noto+Sans:wght@100&family=Source+Sans+Pro:wght@200&family=Spline+Sans+Mono:wght@400;500;600&family=Titillium+Web:wght@600&display=swap');
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+    sans-serif, 'Montserrat';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -11,3 +13,48 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+/* css page review */
+
+img {
+  border: 1px solid #ddd;
+  border-radius: 50%;
+  padding: 5px;
+  width: 5%;
+  position: relative;
+  top: 20px; 
+  left: 35px;
+}
+
+#textReview{
+  position: absolute;
+  top: 30%; 
+  left:20%;
+
+}
+
+.stars-outer {
+  display: inline-block;
+  position: relative;
+  font-family: FontAwesome;
+}
+ 
+.stars-outer::before {
+  content: "\f006 \f006 \f006 \f006 \f006";
+}
+ 
+.stars-inner {
+  position: absolute;
+  top: 0;
+  left: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  width: 0;
+}
+ 
+.stars-inner::before {
+  content: "\f005 \f005 \f005 \f005 \f005";
+  color: #f8ce0b;
+}
+
+/* close css page review */

@@ -1,0 +1,43 @@
+const seedProducts = [
+  {
+    idProductowner: 1,
+    origin: 'Argentina',
+    rating: 3,
+    reviews: 'gud',
+    type: 'lager',
+    alcoholPercentage: 6,
+    size: 500,
+    price: 150,
+    name: 'Quilmes clasica',
+    img: 'urlimagen',
+    brand: 'Quilmes',
+  },
+  {
+    idProductowner: 2,
+    origin: 'Alemana',
+    rating: 4,
+    reviews: 'very gud',
+    type: 'amber lager',
+    alcoholPercentage: 7,
+    size: 650,
+    price: 250,
+    name: 'AlemanBeer',
+    img: 'urlimagen',
+    brand: 'Grolsh',
+  },
+  {
+    idProductowner: 3,
+    origin: 'Belgica',
+    rating: 5,
+    reviews: 'Premium',
+    type: 'black',
+    alcoholPercentage: 10,
+    size: 600,
+    price: 450,
+    name: 'Belgam',
+    img: 'urlimagen',
+    brand: 'BelgamBeer',
+  },
+];
+
+module.exports = seedProducts;
