@@ -1,12 +1,13 @@
 const express = require('express');
 const router = express.Router();
 const Sequelize = require('sequelize');
+const Product = require('../models/Product');
 const Op = Sequelize.Op;
-const { Products } = require("../models");
+//const { Products } = require("../models");
 
 //devuelve productos de la categoria pasada por parametro
-router.get("/productsById/:id", (req, res) => {
-  Products.findAll({ where: { id: req.params.id } })
+router.get('/:id', (req, res) => {
+  Product.findAll({ where: { id: req.params.id } })
     .then((products) => {
       res.send(products);
     })
@@ -15,9 +16,9 @@ router.get("/productsById/:id", (req, res) => {
     });
 });
 
-//devuelve los productos que coinciden con el nombre pasado por parametro
-router.get("/productsByName/:name", (req, res) => {
-  Products.findAll({ where: { name: req.params.name } })
+//devuelve los productos que coinciden con el nombre pasado por parametro// necesario?
+router.get('/:name', (req, res) => {
+  Product.findAll({ where: { name: req.params.name } })
     .then((products) => {
       res.send(products);
     })
@@ -28,23 +29,23 @@ router.get("/productsByName/:name", (req, res) => {
 
 //all products
 router.get('/', (req, res) => {
-  Products.findAll().then((users) => res.send(users));
+  Product.findAll().then((users) => res.send(users));
 });
 
 //One particular product
 router.post('/search', (req, res) => {
-  Products.findAll({
+  Product.findAll({
     where: { name: { [Op.like]: `%${req.body.search}%` } },
   }).then((users) => res.send(users));
 });
 
 //Add product
-router.post('/new', (req, res) => {
-  Products.findOne({
-    where: { name: req.body.email, marca: req.body.marca },
+router.post('/', (req, res) => {
+  Product.findOne({
+    where: { idProductowner: req.body.idProductowner },
   }).then((result) => {
     if (result === null) {
-      Products.create(req.body).then((user) => res.status(201).send(user));
+      Product.create(req.body).then((user) => res.status(201).send(user));
     } else {
       res.status(401).send();
     }
@@ -52,17 +53,23 @@ router.post('/new', (req, res) => {
 });
 
 //Modify product
-router.put('/', function (req, res, next) {
-  const { alcohol_porcentaje, size, price, name } = req.params;
+router.put('/:id', function(req, res, next) {
+  const { id } = req.params;
 
-  const response = (resCart) => ({
-    idShop,
-    email: resCart.content,
+  const response = (resProduct) => ({
+    id,
+    alcoholPercentage: resProduct.contente,
+    size: resProduct.contente,
+    price: resProduct.contente,
+    name: resProduct.contente,
   });
 
-  Products.update(
+  Product.update(
     {
-      quantity: req.body.quantity,
+      alcoholPercentage: req.body.alcoholPercentage,
+      size: req.body.size,
+      price: req.body.price,
+      name: req.body.name,
     },
     {
       where: { id: req.params.id },
@@ -70,14 +77,17 @@ router.put('/', function (req, res, next) {
     }
   )
     .then(([rows, result]) =>
-      res.status(201).send(response(result[0])).status(202)
+      res
+        .status(201)
+        .send(response(result[0]))
+        .status(202)
     )
     .catch(next);
 });
 
 //Delete product
 router.delete('/', (req, res) => {
-  Products.destroy({ where: { idBeer: req.body.idBeer } }).then(() =>
+  Product.destroy({ where: { idBeer: req.body.idBeer } }).then(() =>
     res.sendStatus(202)
   );
 });
