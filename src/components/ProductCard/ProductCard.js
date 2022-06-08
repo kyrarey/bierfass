@@ -10,9 +10,7 @@ import { FavoriteIcon } from "@mui/icons-material";
 import { AddShoppingCartIcon } from "@mui/icons-material";
 
 //ProductCard recibe como parámetro la data
-const ProductCard = (
-
-) => {
+const ProductCard = () => {
   return (
     <div>
       <Card className="card">
