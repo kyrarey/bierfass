@@ -1,0 +1,73 @@
+.container {
+    margin-top: 100px;
+  }
+  
+  .information {
+    width: 50px;
+    color: #555;
+    font-size: 18px;
+    font-weight: bold;
+    padding-top: 5px;
+    padding-bottom: 5px;
+  }
+  
+  .col-md-7 h2 {
+    color: #555;
+    font-size: 30px;
+    font-weight: bold;
+    padding-top: 5px;
+    padding-bottom: 5px;
+  }
+  
+  .price {
+    color: #555;
+    font-size: 26px;
+    font-weight: bold;
+    padding-top: 2px;
+    padding-bottom: 2px;
+  }
+  
+  label {
+    padding-right: 3px;
+  }
+  input {
+    border: 1px solid #ccc;
+    font-weight: bold;
+    height: 30px;
+    text-align: center;
+    width: 30px;
+  }
+  
+  .btn-qty {
+    background: #f7cd25;
+    color: #ffffff;
+    box-sizing: border-box;
+    padding: 8px 8px;
+    font-size: 4px;
+    cursor: pointer;
+    margin-left: 3px;
+    margin-right: 3px;
+  }
+  
+  
+  .cart {
+    background: #f7cd25;
+    color: #ffffff;
+    font-size: 15px;
+    margin-left: 20px;
+  }
+  
+  .cart:hover {
+    background-color: #ffffff;
+    transition: 0.7s;
+  }
+  .cart:focus {
+    outline-color: transparent;
+    outline-style: solid;
+    box-shadow: 0 0 0 1.5px #0f7173;
+    transition: 0.7s;
+  }
+  .cart.active {
+    background-color: #0f7173;
+  }
+  

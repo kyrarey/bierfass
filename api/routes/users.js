@@ -1,10 +1,10 @@
-const express = require("express");
+const express = require('express');
 const router = express.Router();
-const { Users } = require("../models");
-const passport = require("passport");
+//const { Users } = require("../models");
+const passport = require('passport');
 
 //registrar usuario nuevo
-router.post("/register", (req, res) => {
+router.post('/register', (req, res) => {
   Users.create(req.body)
     .then((user) => {
       res.status(201).send(user);
@@ -15,18 +15,18 @@ router.post("/register", (req, res) => {
 });
 
 //autenticar usuario
-router.post("/login", passport.authenticate("local"), (req, res) => {
+router.post('/login', passport.authenticate('local'), (req, res) => {
   res.send(req.user);
 });
 
 //logout usuario
-router.post("/logout", (req, res) => {
+router.post('/logout', (req, res) => {
   req.logout(); //funcion de passport
   res.sendStatus(200);
 });
 
 //editar usuario
-router.put("/:id", (req, res) => {
+router.put('/:id', (req, res) => {
   Users.findByPk({ where: { id: req.params.id } })
     .then((user) => {
       user.update(req.body);
@@ -38,7 +38,7 @@ router.put("/:id", (req, res) => {
 });
 
 //retornar usuario logeado
-router.get("/me", (req, res) => {
+router.get('/me', (req, res) => {
   if (req.user) {
     res.send(req.user);
   } else {
@@ -47,7 +47,7 @@ router.get("/me", (req, res) => {
 });
 
 //pasar usuario a admin
-router.put("/admin/:id", (req, res) => {
+router.put('/admin/:id', (req, res) => {
   Users.findByPk({ where: { id: req.params.id } })
     .then((user) => {
       user.update(!req.admin);
@@ -59,7 +59,7 @@ router.put("/admin/:id", (req, res) => {
 });
 
 //como admin para eliminar usuarios
-router.delete("/admin/:id", (req, res) => {
+router.delete('/admin/:id', (req, res) => {
   Users.findByPk(req.params.id)
     .then((user) => {
       user.destroy(); //borra el usuario de la db(sequelize)
@@ -71,7 +71,7 @@ router.delete("/admin/:id", (req, res) => {
 });
 
 //como admin ver todos los usuarios
-router.get("/admin/users", (req, res) => {
+router.get('/admin/users', (req, res) => {
   Users.findAll()
     .then((users) => {
       res.send(users);
