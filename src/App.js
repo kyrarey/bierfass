@@ -1,6 +1,5 @@
 import React from 'react';
 import './App.css';
-import ProductCard from './components/ProductCard/ProductCard';
 import Header from './components/Header/Header';
 import Navbar from './components/Navbar/Navbar';
 import Account from './components/Account/Account';
@@ -14,15 +13,16 @@ import Footer from './components/Footer/Footer';
 import Register from './components/Register/Register';
 import Login from './components/Login/Login';
 import Product from './components/Product/Product';
-import { Route, Routes } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import { GlobalProvider } from './context/globalUserContext';
 
 function App() {
   return (
     <GlobalProvider>
-      <>
+      <Router>
         <Navbar />
         <Header />
+
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/register" element={<Register />} />
@@ -34,9 +34,9 @@ function App() {
           <Route path="/product/:id" element={<Product />} />
           <Route path="/users" element={<Users />} />
           <Route path="/reviews" element={<Reviews />} />
-          <Footer />
         </Routes>
-      </>
+        <Footer />
+      </Router>
     </GlobalProvider>
   );
 }
