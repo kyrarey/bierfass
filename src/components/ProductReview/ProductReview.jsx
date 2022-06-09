@@ -6,12 +6,12 @@ import { Link } from "react-router-dom";
 import "./ProductReview.css";
 
 const ProductReview = () => {
-  const { id } = useParams();
+  const {userId, productId } = useParams();
   const [review, setReview] = useState("");
 
   useEffect(() => {
     axios
-      .get(`/api/reviews/${id}`)
+      .get(`/api/reviews/${productId}`)
       .then((response) => response.data)
       .then((reviews) => setReview(reviews));
   }, []);
@@ -41,7 +41,7 @@ const ProductReview = () => {
                     </p>
                   </div>
                   <div>
-                    <i className="bi bi-star"></i>
+                    <i className="bi bi-star">{Onereview.rating}</i>
                   </div>
                 </div>
                 <div className="col" id="textReview">
@@ -53,7 +53,7 @@ const ProductReview = () => {
         )}
       </ul>
       <div>
-        <Link to={`/newReview/${id}`}>
+        <Link to={`/newReview/${userId}/${productId}`}>
           <button type="button" class="btn btn-default cart">
             agregar review
           </button>

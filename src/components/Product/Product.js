@@ -4,6 +4,7 @@ import ProductReview from "../ProductReview/ProductReview";
 import alcohol from "../../assets/iconAlcohol.png"
 import location from "../../assets/location.png"
 
+
 const products = {
   name: "Roja Ipa",
   type: "Roja",
@@ -20,6 +21,7 @@ const products = {
 
 //ProductCard recibe como parámetro la data
 const Product = () => {
+
   const [quantity, setQuantity] = useState(1);
 
   const handleDecrease = () => {
@@ -33,6 +35,7 @@ const Product = () => {
       setQuantity((prevCount) => prevCount + 1);
     }
   };
+
   return (
     <>
       <div className="container">
