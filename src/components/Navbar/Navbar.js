@@ -1,7 +1,25 @@
 import React from 'react';
+import axios from 'axios';
+import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { useGlobalContext } from '/home/mgonidev/Desktop/BierfassV2/bierfass/src/context/globalUserContext.js';
 import './Navbar.css';
 
 const Navbar = () => {
+  let navigate = useNavigate();
+  const [search, setSearch] = useState('');
+  const { setProductSearch } = useGlobalContext();
+
+  const onClickHandler = (e) => {
+    e.preventDefault();
+    axios
+      .post(`http://localhost:8000/api/products/search`, { search })
+      .then((data) => {
+        setProductSearch(data.data);
+        navigate('/search');
+      });
+  };
+
   return (
     <header class="header">
       <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -58,8 +76,13 @@ const Navbar = () => {
                 size="40"
                 placeholder="Search"
                 aria-label="Search"
+                onChange={(e) => setSearch(e.target.value)}
               />
-              <button class="btn btn-outline-light" type="submit">
+              <button
+                onClick={onClickHandler}
+                class="btn btn-outline-light"
+                type="submit"
+              >
                 Search
               </button>
             </form>
