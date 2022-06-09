@@ -1,8 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
 import "./Product.css";
-import Andes2 from "./Andes2.webp";
-import Andes3 from "./Andes3.jpeg";
 import ProductReview from "../ProductReview/ProductReview";
+import alcohol from "../../assets/iconAlcohol.png"
+import location from "../../assets/location.png"
 
 
 const products = {
@@ -12,12 +12,29 @@ const products = {
   price: "250",
   origin: "Argentina",
   marca: "Andes",
+  qty: 150,
+  img1: "/Users/eva/Plataforma5/proyecto/bierfass/src/components/Product/Andes2.webp",
+  img2: "/Users/eva/Plataforma5/proyecto/bierfass/src/components/Product/Andes3.jpeg",
+  alcohol_porcentaje: "5,6%"
 };
 
-console.log(products.name);
+
 //ProductCard recibe como parámetro la data
 const Product = () => {
 
+  const [quantity, setQuantity] = useState(1);
+
+  const handleDecrease = () => {
+    if (quantity > 1) {
+      setQuantity((prevCount) => prevCount - 1);
+    }
+  };
+
+  const handleIncrease = () => {
+    if (quantity < 10) {
+      setQuantity((prevCount) => prevCount + 1);
+    }
+  };
 
   return (
     <>
@@ -31,10 +48,10 @@ const Product = () => {
             >
               <div class="carousel-inner">
                 <div class="carousel-item">
-                  <img src={Andes2} class="d-block w-100" alt="Second slide" />
+                  <img src={products.img1} class="d-block w-100" alt="Second slide" />
                 </div>
                 <div class="carousel-item">
-                  <img src={Andes3} class="d-block w-100" alt="Third slide" />
+                  <img src={products.img2} class="d-block w-100" alt="Third slide" />
                 </div>
               </div>
               <button
@@ -76,17 +93,24 @@ const Product = () => {
             </p>
             <p class="price">$ {products.price}</p>
             <p>
-              <b>Origen: </b>
+              <img src={location} />
               {products.origin}
             </p>
-
             <p>
-              <b>Disponibilidad: </b> En stock
+              <img src={alcohol} />
+              {products.alcohol_porcentaje}
+            </p>
+            <p>
+              <b>Disponibilidad: </b> {products.qty} unidades
             </p>
             <label>
               <b>Cantidad: </b>
             </label>
-            <button type="submit" class="btn btn-default btn-qty">
+            <button
+              type="submit"
+              onClick={handleDecrease}
+              class="btn btn-default btn-qty"
+            >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="16"
@@ -98,8 +122,12 @@ const Product = () => {
                 <path d="M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8z" />
               </svg>
             </button>
-            <input type="text" value="1"></input>
-            <button type="submit" class="btn btn-default btn-qty">
+            <div className="form-control text-center">{quantity}</div>
+            <button
+              type="submit"
+              onClick={handleIncrease}
+              class="btn btn-default btn-qty"
+            >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="16"
