@@ -1,9 +1,17 @@
-import React from 'react'
+import React from 'react';
+import ProductCard from '../ProductCard/ProductCard';
+import { useGlobalContext } from '/home/mgonidev/Desktop/BierfassV2/bierfass/src/context/globalUserContext.js';
 
 const Search = () => {
-  return (
-    <div>Search</div>
-  )
-}
+  const { productSearch } = useGlobalContext();
 
-export default Search
+  return (
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+      {productSearch.map((card) => (
+        <ProductCard {...card} />
+      ))}
+    </div>
+  );
+};
+
+export default Search;
