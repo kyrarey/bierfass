@@ -27,14 +27,14 @@ function App() {
           <Header />
           <Routes>
             <Route path="/" element={<Home />} />
-            <Route path="/newReview/:id" element={<Home />} />
+            <Route path="/newReview/:userId/:productId" element={<Home />} />
             <Route path="/register" element={<Register />} />
             <Route path="/login" element={<Login />} />
             <Route path="/logout" element={<Logout />} />
             <Route path="/me" element={<Account />} />
             <Route path="/search" element={<Search />} />
             <Route path="/cart" element={<Cart />} />
-            <Route path="/product/:id" element={<Product />} />
+            <Route path="/product/:productId" element={<Product />} />
             <Route path="/users" element={<Users />} />
             <Route path="/reviews" element={<Reviews />} />
           </Routes>
@@ -44,3 +44,5 @@ function App() {
     </GlobalProvider>
   );
 }
+
+export default App

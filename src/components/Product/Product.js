@@ -4,6 +4,7 @@ import Andes2 from "./Andes2.webp";
 import Andes3 from "./Andes3.jpeg";
 import ProductReview from "../ProductReview/ProductReview";
 
+
 const products = {
   name: "Roja Ipa",
   type: "Roja",
@@ -16,6 +17,8 @@ const products = {
 console.log(products.name);
 //ProductCard recibe como parámetro la data
 const Product = () => {
+
+
   return (
     <>
       <div className="container">
