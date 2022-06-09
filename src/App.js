@@ -19,6 +19,9 @@ import Product from './components/Product/Product';
 import { Route, Routes } from 'react-router-dom';
 import { GlobalProvider } from './context/globalUserContext';
 import ReCAPTCHA from "react-google-recaptcha";
+import NewReview from './components/NewReview/NewReview.jsx';
+
+
 
 function App() {
   return (
@@ -26,8 +29,10 @@ function App() {
       <>
         <Navbar />
         <Header />
-        <Routes>
+          <Routes>
+
           <Route path="/" element={<Home />} />
+          <Route path="/newReview/:id" element={<Home />} />
           <Route path="/register" element={<Register />} />
           <Route path="/login" element={<Login />} />
           <Route path="/logout" element={<Logout />} />
