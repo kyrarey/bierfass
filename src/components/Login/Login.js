@@ -42,7 +42,7 @@ const Login = () => {
   return (
     <div class="container">
       <div class="col-sm-6 login-form pt-5">
-        <h2>Sign In</h2>
+        <h2>Accedé a tu cuenta</h2>
         <form onSubmit={handleSubmit}>
           <div class="form-group col-md-6 pb-3">
             <label for="Email" class="form-label">
@@ -53,6 +53,7 @@ const Login = () => {
               class="form-control"
               id="Email"
               placeholder="email"
+              value={email}
               onChange={(e) => setEmail(e.target.value)}
               required
             />
@@ -60,20 +61,21 @@ const Login = () => {
 
           <div class="form-group col-md-6 pb-3">
             <label for="Password" class="form-label">
-              Password
+              Contraseña
             </label>
             <input
               type="password"
               class="form-control"
               id="Password"
-              placeholder="password"
+              placeholder="contraseña"
+              value={password}
               onChange={(e) => setPassword(e.target.value)}
               required
             />
           </div>
 
           <button type="submit" class="btn btn-primary">
-            Login
+            Ingresá
           </button>
         </form>
         <div class="recaptcha pt-4">
