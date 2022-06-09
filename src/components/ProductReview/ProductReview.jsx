@@ -2,6 +2,7 @@ import React from "react";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
 import "./ProductReview.css";
 
 const ProductReview = () => {
@@ -52,7 +53,11 @@ const ProductReview = () => {
         )}
       </ul>
       <div>
-        <button id="buttonAddReview">agregar review</button>
+        <Link to={`/newReview/${id}`}>
+          <button type="button" class="btn btn-default cart">
+            agregar review
+          </button>
+        </Link>
       </div>
     </div>
   );

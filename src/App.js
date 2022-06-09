@@ -15,6 +15,8 @@ import Login from './components/Login/Login';
 import Product from './components/Product/Product';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import { GlobalProvider } from './context/globalUserContext';
+import NewReview from './components/NewReview/NewReview.jsx';
+
 
 function App() {
   return (
@@ -22,9 +24,9 @@ function App() {
       <Router>
         <Navbar />
         <Header />
-
-        <Routes>
+          <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="/newReview/:id" element={<Home />} />
           <Route path="/register" element={<Register />} />
           <Route path="/login" element={<Login />} />
           <Route path="/logout" element={<Logout />} />
