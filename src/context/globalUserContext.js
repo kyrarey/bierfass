@@ -13,9 +13,12 @@ export const useGlobalContext = () => {
 
 export const GlobalProvider = ({ children }) => {
   const [user, setUser] = useState({});
+  const [productSearch, setProductSearch] = useState([]);
 
   return (
-    <GlobalContext.Provider value={{ user, setUser }}>
+    <GlobalContext.Provider
+      value={{ user, setUser, productSearch, setProductSearch }}
+    >
       {children}
     </GlobalContext.Provider>
   );

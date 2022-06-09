@@ -14,3 +14,9 @@ code {
     monospace;
 }
 
+.imgProd img {
+  max-height: 300px;
+  min-height: 300px;
+  max-width: 300px;
+  min-width: 300px;
+}
