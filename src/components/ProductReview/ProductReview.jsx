@@ -1,13 +1,18 @@
-import React from "react";
-import axios from "axios";
-import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
-import { Link } from "react-router-dom";
-import "./ProductReview.css";
+import React from 'react';
+import axios from 'axios';
+import { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
+import { Link } from 'react-router-dom';
+import './ProductReview.css';
+import { useGlobalContext } from '../../context/globalUserContext';
 
 const ProductReview = () => {
-  const {userId, productId } = useParams();
-  const [review, setReview] = useState("");
+  const { user } = useGlobalContext();
+  console.log(user);
+  const { userId, productId } = useParams();
+  const [review, setReview] = useState('');
+
+  console.log(review);
 
   useEffect(() => {
     axios
@@ -36,8 +41,8 @@ const ProductReview = () => {
                   <div id="date">
                     <p className="text-left">
                       {new Date(Onereview.createdAt).toLocaleDateString(
-                        "es-AR"
-                      )}{" "}
+                        'es-AR'
+                      )}{' '}
                     </p>
                   </div>
                   <div>

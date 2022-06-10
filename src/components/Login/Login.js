@@ -1,11 +1,13 @@
 import React, { useRef, useState } from 'react';
-
+import { useGlobalContext } from '../../context/globalUserContext';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import ReCAPTCHA from 'react-google-recaptcha';
 
 const Login = () => {
-  const [user, setUser] = useState('');
+  //const [userlog, setUserlog] = useState('');
+  var self = this;
+  const { user, setUser } = useGlobalContext();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const captcha = useRef(null);
@@ -21,24 +23,21 @@ const Login = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
     if (captcha.current.getValue()) {
       setCaptchaValue(true);
     }
 
     axios
-      .post('/login', {
+      .post('http://localhost:8000/api/users/login', {
         email: email,
         password: password,
       })
       .then((res) => {
         setUser(res.data);
+        navigate('/me');
       });
-    navigate('/me');
   };
-
   // const handleBlur
-
   return (
     <div class="container">
       <div class="col-sm-6 login-form pt-5">

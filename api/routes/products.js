@@ -27,6 +27,15 @@ router.get('/:name', (req, res) => {
     });
 });
 
+//products pagination
+router.get('/list/:page', (req, res) => {
+  let cant = req.params.page * 5;
+  let offset = req.params.page === 1 ? 0 : cant - 5;
+  Product.findAll({ limit: 5, offset: offset }).then((users) =>
+    res.send(users)
+  );
+});
+
 //all products
 router.get('/', (req, res) => {
   Product.findAll().then((users) => res.send(users));
