@@ -1,9 +1,7 @@
 @import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css");
 
-.container {
-  display: flex; /* or inline-flex */
-}
-img {
+
+#img {
   border: 1px solid #ddd;
   border-radius: 50%;
   padding: 5px;
@@ -16,7 +14,6 @@ img {
   padding-top: 2%;
 }
 #textReview {
-  flex-grow: 6;
   padding-top: 2%;
 }
 

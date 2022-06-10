@@ -4,8 +4,11 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
 import "./ProductReview.css";
+import { useGlobalContext } from "../../context/globalUserContext";
 
 const ProductReview = () => {
+  const {user} = useGlobalContext()
+  console.log("user",user);
   const {userId, productId } = useParams();
   const [review, setReview] = useState("");
 
@@ -16,6 +19,8 @@ const ProductReview = () => {
       .then((reviews) => setReview(reviews));
   }, []);
 
+
+
   return (
     <div>
       <ul>
@@ -23,15 +28,19 @@ const ProductReview = () => {
           <h3>REVIEWS</h3>
         </div>
 
-        {!review ? (
-          <p>No hay comentarios aun</p>
+        {review.length === 0 ? (
+          <div>
+                 <p>No hay comentarios aun</p>
+          </div>
+     
         ) : (
           review.map((Onereview) => (
             <li>
-              <div className="container">
-                <div className="col">
-                  <div>
-                    <img src="https://moderncss.dev/img/posts/26/avatar1.png"></img>
+              <div className="container" >
+              <div class="row">
+                <div className="col-2">
+                  <div >
+                    <img id="img" src="https://moderncss.dev/img/posts/26/avatar1.png"></img>
                   </div>
                   <div id="date">
                     <p className="text-left">
@@ -44,8 +53,9 @@ const ProductReview = () => {
                     <i className="bi bi-star">{Onereview.rating}</i>
                   </div>
                 </div>
-                <div className="col" id="textReview">
-                  <p>{Onereview.comment}</p>
+                <div className="col-8" id="textReview">
+                  <p>"{Onereview.comment}"</p>
+                </div>
                 </div>
               </div>
             </li>

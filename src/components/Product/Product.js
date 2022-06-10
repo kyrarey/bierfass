@@ -1,9 +1,12 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./Product.css";
 import ProductReview from "../ProductReview/ProductReview";
-import alcohol from "../../assets/iconAlcohol.png"
-import location from "../../assets/location.png"
-
+import alcohol from "../../assets/iconAlcohol.png";
+import location from "../../assets/location.png";
+import axios from "axios";
+import { useParams } from "react-router-dom";
+import { ReviewsSharp } from "@mui/icons-material";
+import { sum, values } from "lodash";
 
 const products = {
   name: "Roja Ipa",
@@ -13,16 +16,33 @@ const products = {
   origin: "Argentina",
   marca: "Andes",
   qty: 150,
-  img1: "/Users/eva/Plataforma5/proyecto/bierfass/src/components/Product/Andes2.webp",
-  img2: "/Users/eva/Plataforma5/proyecto/bierfass/src/components/Product/Andes3.jpeg",
-  alcohol_porcentaje: "5,6%"
+  img1:
+    "/Users/eva/Plataforma5/proyecto/bierfass/src/components/Product/Andes2.webp",
+  img2:
+    "/Users/eva/Plataforma5/proyecto/bierfass/src/components/Product/Andes3.jpeg",
+  alcohol_porcentaje: "5,6%",
 };
-
 
 //ProductCard recibe como parámetro la data
 const Product = () => {
-
   const [quantity, setQuantity] = useState(1);
+
+  const { productId } = useParams();
+  const [reviews, setReviews] = useState([]);
+  let sum = 0;
+
+  useEffect(() => {
+    axios
+      .get(`/api/reviews/${productId}`)
+      .then((response) => response.data)
+      .then((comments) => setReviews(comments));
+  }, []);
+
+  reviews.map((object) => {
+    sum += object.rating;
+  });
+
+  const starRating = sum / reviews.length;
 
   const handleDecrease = () => {
     if (quantity > 1) {
@@ -48,10 +68,18 @@ const Product = () => {
             >
               <div class="carousel-inner">
                 <div class="carousel-item">
-                  <img src={products.img1} class="d-block w-100" alt="Second slide" />
+                  <img
+                    src={products.img1}
+                    class="d-block w-100"
+                    alt="Second slide"
+                  />
                 </div>
                 <div class="carousel-item">
-                  <img src={products.img2} class="d-block w-100" alt="Third slide" />
+                  <img
+                    src={products.img2}
+                    class="d-block w-100"
+                    alt="Third slide"
+                  />
                 </div>
               </div>
               <button
@@ -102,6 +130,10 @@ const Product = () => {
             </p>
             <p>
               <b>Disponibilidad: </b> {products.qty} unidades
+            </p>
+            <p>
+              <b>Puntuacion: </b> {starRating} estrellas
+              <i className="bi bi-star"></i>
             </p>
             <label>
               <b>Cantidad: </b>

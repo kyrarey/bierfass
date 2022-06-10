@@ -3,9 +3,11 @@ import React, { useRef, useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import ReCAPTCHA from 'react-google-recaptcha';
+import { useGlobalContext } from '../../context/globalUserContext';
 
 const Login = () => {
-  const [user, setUser] = useState('');
+ 
+  const {setUser, user} = useGlobalContext()
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const captcha = useRef(null);
@@ -27,12 +29,13 @@ const Login = () => {
     }
 
     axios
-      .post('/login', {
+      .post('http://localhost:8000/api/users/login', {
         email: email,
         password: password,
       })
       .then((res) => {
         setUser(res.data);
+        localStorage.setItem("user", JSON.stringify(res.data));
       });
     navigate('/me');
   };
