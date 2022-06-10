@@ -8,25 +8,9 @@ import { useParams } from 'react-router-dom';
 import { ReviewsSharp } from '@mui/icons-material';
 import { sum, values } from 'lodash';
 
-const products = {
-  name: 'Roja Ipa',
-  type: 'Roja',
-  size: '450 ml',
-  price: '250',
-  origin: 'Argentina',
-  marca: 'Andes',
-  qty: 150,
-  img1:
-    '/Users/eva/Plataforma5/proyecto/bierfass/src/components/Product/Andes2.webp',
-  img2:
-    '/Users/eva/Plataforma5/proyecto/bierfass/src/components/Product/Andes3.jpeg',
-  alcohol_porcentaje: '5,6%',
-};
-
 const Product = () => {
   const [product, setProduct] = useState([]);
   const [quantity, setQuantity] = useState(1);
-  const { id } = useParams();
 
   const { productId } = useParams();
   const [reviews, setReviews] = useState([]);
@@ -58,12 +42,17 @@ const Product = () => {
   };
 
   useEffect(() => {
+    console.log(`http://localhost:8000/api/products/${productId}`);
     axios
-      .get(`http://localhost:8000/api/products`)
-      .then((res) => console.log('SOY DATA', res.data))
+      .get(`http://localhost:8000/api/products/${productId}`)
+      .then((res) => {
+        console.log('SOY DATA', res.data[0]);
+        return res.data[0];
+      })
       .then((product) => setProduct(product));
-    console.log('SOY PRODUCT', product);
-  }, [id]);
+  }, []);
+
+  console.log('SOY PRODUCT', product);
 
   return (
     <>
@@ -76,9 +65,11 @@ const Product = () => {
               data-bs-ride="carousel"
             >
               <div class="carousel-inner">
-                <div class="carousel-item">
-                  <img src={product} class="d-block w-100" alt="First slide" />
-                </div>
+                <img
+                  src={product.img}
+                  class="d-block w-100"
+                  alt="First slide"
+                />
               </div>
               <button
                 class="carousel-control-prev"
@@ -107,24 +98,24 @@ const Product = () => {
             </div>
           </div>
           <div class="col-8">
-            <p class="information text-md-left">{products.type}</p>
-            <h2>{products.name}</h2>
+            <p class="information text-md-left">{product.type}</p>
+            <h2>{product.name}</h2>
             <p>
               <b>Marca: </b>
-              {products.marca}
+              {product.brand}
             </p>
             <p>
               <b>Tamaño: </b>
-              {products.size}
+              {product.size}
             </p>
-            <p class="price">$ {products.price}</p>
+            <p class="price">$ {product.price}</p>
             <p>
               <img src={location} />
-              {products.origin}
+              {product.origin}
             </p>
             <p>
               <img src={alcohol} />
-              {products.alcohol_porcentaje}
+              {product.alcoholPercentage}
             </p>
             <p>
               <b>Disponibilidad: </b> 150 unidades

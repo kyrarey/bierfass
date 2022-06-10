@@ -5,7 +5,7 @@ const CustomPagination = ({ setPage, page }) => {
 
   const handlePageChange = (page) => {
     setPage(page);
-    window.scroll(0, 0);
+    window.scroll(0, 2800);
   };
 
   return (

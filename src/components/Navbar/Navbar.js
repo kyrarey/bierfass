@@ -11,6 +11,20 @@ import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import { Link } from 'react-router-dom';
 
 const Navbar = () => {
+  let navigate = useNavigate();
+  const [search, setSearch] = useState('');
+  const { setProductSearch } = useGlobalContext();
+
+  const onClickHandler = (e) => {
+    e.preventDefault();
+    axios
+      .post(`http://localhost:8000/api/products/search`, { search })
+      .then((data) => {
+        setProductSearch(data.data);
+        navigate('/search');
+      });
+  };
+
   return (
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
       <div class="container-fluid">
@@ -65,8 +79,13 @@ const Navbar = () => {
                 size="50"
                 placeholder="Buscar"
                 aria-label="Search"
+                onChange={(e) => setSearch(e.target.value)}
               />
-              <button class="btn btn-outline-light" type="submit">
+              <button
+                onClick={onClickHandler}
+                class="btn btn-outline-light"
+                type="submit"
+              >
                 <SearchIcon />
               </button>
             </form>

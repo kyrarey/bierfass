@@ -3,7 +3,6 @@ import { useGlobalContext } from '../../context/globalUserContext';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import ReCAPTCHA from 'react-google-recaptcha';
-import { useGlobalContext } from '../../context/globalUserContext';
 
 const Login = () => {
   const { user, setUser } = useGlobalContext();
@@ -22,9 +21,9 @@ const Login = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (captcha.current.getValue()) {
-      setCaptchaValue(true);
-    }
+    // if (captcha.current.getValue()) {
+    //   setCaptchaValue(true);
+    // }
 
     axios
       .post('http://localhost:8000/api/users/login', {

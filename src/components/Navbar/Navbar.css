@@ -1,28 +1,32 @@
 @import url('https://fonts.googleapis.com/css2?family=Oi&family=Roboto:ital@1&family=Tangerine&display=swap');
 
 header {
-    background: url(./beerserving.jpg) no-repeat center;
-    background-size: cover;
-    min-height: 100vh;
-    padding: 220px;
-    margin-bottom: 50px;
+  background: url(./beerserving.jpg) no-repeat center;
+  background-size: cover;
+  min-height: 100vh;
+  padding: 220px;
+  margin-bottom: 50px;
 }
 
 header .container {
-    background-color: oldlace;
-    padding: 220px;
+  background-color: oldlace;
+  padding: 220px;
 }
 
 header h1 {
-    font-family: 'Oi', cursive;
-    font-size: 6em;
-    color: rgb(242, 147, 46);
+  font-family: 'Oi', cursive;
+  font-size: 6em;
+  color: rgb(242, 147, 46);
 }
 
 header p {
-    font-family: 'Tangerine', cursive;
-    font-size: 2em;
-    color: rgb(62, 38, 13);
+  font-family: 'Tangerine', cursive;
+  font-size: 2em;
+  color: rgb(62, 38, 13);
+}
+
+.lead {
+  font-size: 350%;
 }
 
 /* .header .navbar {
