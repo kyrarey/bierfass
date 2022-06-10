@@ -1,6 +1,6 @@
-import React from "react";
-import "./Header.css";
-import SportsBarIcon from "@mui/icons-material/SportsBar";
+import React from 'react';
+import './Header.css';
+import SportsBarIcon from '@mui/icons-material/SportsBar';
 
 const Header = () => {
   return (

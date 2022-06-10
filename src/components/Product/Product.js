@@ -1,31 +1,32 @@
-import React, { useEffect, useState } from "react";
-import "./Product.css";
-import ProductReview from "../ProductReview/ProductReview";
-import alcohol from "../../assets/iconAlcohol.png";
-import location from "../../assets/location.png";
-import axios from "axios";
-import { useParams } from "react-router-dom";
-import { ReviewsSharp } from "@mui/icons-material";
-import { sum, values } from "lodash";
+import React, { useState, useEffect } from 'react';
+import './Product.css';
+import ProductReview from '../ProductReview/ProductReview';
+import alcohol from '../../assets/iconAlcohol.png';
+import location from '../../assets/location.png';
+import axios from 'axios';
+import { useParams } from 'react-router-dom';
+import { ReviewsSharp } from '@mui/icons-material';
+import { sum, values } from 'lodash';
 
 const products = {
-  name: "Roja Ipa",
-  type: "Roja",
-  size: "450 ml",
-  price: "250",
-  origin: "Argentina",
-  marca: "Andes",
+  name: 'Roja Ipa',
+  type: 'Roja',
+  size: '450 ml',
+  price: '250',
+  origin: 'Argentina',
+  marca: 'Andes',
   qty: 150,
   img1:
-    "/Users/eva/Plataforma5/proyecto/bierfass/src/components/Product/Andes2.webp",
+    '/Users/eva/Plataforma5/proyecto/bierfass/src/components/Product/Andes2.webp',
   img2:
-    "/Users/eva/Plataforma5/proyecto/bierfass/src/components/Product/Andes3.jpeg",
-  alcohol_porcentaje: "5,6%",
+    '/Users/eva/Plataforma5/proyecto/bierfass/src/components/Product/Andes3.jpeg',
+  alcohol_porcentaje: '5,6%',
 };
 
-//ProductCard recibe como parámetro la data
 const Product = () => {
+  const [product, setProduct] = useState([]);
   const [quantity, setQuantity] = useState(1);
+  const { id } = useParams();
 
   const { productId } = useParams();
   const [reviews, setReviews] = useState([]);
@@ -56,11 +57,19 @@ const Product = () => {
     }
   };
 
+  useEffect(() => {
+    axios
+      .get(`http://localhost:8000/api/products`)
+      .then((res) => console.log('SOY DATA', res.data))
+      .then((product) => setProduct(product));
+    console.log('SOY PRODUCT', product);
+  }, [id]);
+
   return (
     <>
       <div className="container">
         <div class="row">
-          <div class="col-md-5">
+          <div class="col-4">
             <div
               id="carouselExampleControls"
               class="carousel slide"
@@ -68,18 +77,7 @@ const Product = () => {
             >
               <div class="carousel-inner">
                 <div class="carousel-item">
-                  <img
-                    src={products.img1}
-                    class="d-block w-100"
-                    alt="Second slide"
-                  />
-                </div>
-                <div class="carousel-item">
-                  <img
-                    src={products.img2}
-                    class="d-block w-100"
-                    alt="Third slide"
-                  />
+                  <img src={product} class="d-block w-100" alt="First slide" />
                 </div>
               </div>
               <button
@@ -108,7 +106,7 @@ const Product = () => {
               </button>
             </div>
           </div>
-          <div class="col-md-7">
+          <div class="col-8">
             <p class="information text-md-left">{products.type}</p>
             <h2>{products.name}</h2>
             <p>
@@ -129,7 +127,7 @@ const Product = () => {
               {products.alcohol_porcentaje}
             </p>
             <p>
-              <b>Disponibilidad: </b> {products.qty} unidades
+              <b>Disponibilidad: </b> 150 unidades
             </p>
             <p>
               <b>Puntuacion: </b> {starRating} estrellas
