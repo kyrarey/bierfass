@@ -1,5 +1,6 @@
 .container {
     margin-top: 100px;
+    
   }
   
   .information {
@@ -30,14 +31,7 @@
   label {
     padding-right: 3px;
   }
-  input {
-    border: 1px solid #ccc;
-    font-weight: bold;
-    height: 30px;
-    text-align: center;
-    width: 30px;
-  }
-  
+
   .btn-qty {
     background: #f7cd25;
     color: #ffffff;
@@ -48,7 +42,6 @@
     margin-left: 3px;
     margin-right: 3px;
   }
-  
   
   .cart {
     background: #f7cd25;
