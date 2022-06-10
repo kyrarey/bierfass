@@ -1,9 +1,9 @@
-import React from 'react'
-
+import React from 'react';
+import { useGlobalContext } from '../../context/globalUserContext';
 const Account = () => {
-  return (
-    <div>Account</div>
-  )
-}
+  const { user } = useGlobalContext();
+  console.log(user);
+  return <div>{user.firstName}</div>;
+};
 
-export default Account
+export default Account;

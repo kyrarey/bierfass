@@ -1,25 +1,24 @@
-import React from "react";
-import axios from "axios";
-import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
-import { Link } from "react-router-dom";
-import "./ProductReview.css";
-import { useGlobalContext } from "../../context/globalUserContext";
+import React from 'react';
+import axios from 'axios';
+import { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
+import { Link } from 'react-router-dom';
+import './ProductReview.css';
+import { useGlobalContext } from '../../context/globalUserContext';
 
 const ProductReview = () => {
-  const {user} = useGlobalContext()
-  console.log("user",user);
-  const {userId, productId } = useParams();
-  const [review, setReview] = useState("");
+  const { user } = useGlobalContext();
+  console.log(user);
+  const { userId, productId } = useParams();
+  const [review, setReview] = useState('');
 
+  console.log(review);
   useEffect(() => {
     axios
       .get(`/api/reviews/${productId}`)
       .then((response) => response.data)
       .then((reviews) => setReview(reviews));
   }, []);
-
-
 
   return (
     <div>
@@ -30,32 +29,34 @@ const ProductReview = () => {
 
         {review.length === 0 ? (
           <div>
-                 <p>No hay comentarios aun</p>
+            <p>No hay comentarios aun</p>
           </div>
-     
         ) : (
           review.map((Onereview) => (
             <li>
-              <div className="container" >
-              <div class="row">
-                <div className="col-2">
-                  <div >
-                    <img id="img" src="https://moderncss.dev/img/posts/26/avatar1.png"></img>
+              <div className="container">
+                <div class="row">
+                  <div className="col-2">
+                    <div>
+                      <img
+                        id="img"
+                        src="https://moderncss.dev/img/posts/26/avatar1.png"
+                      ></img>
+                    </div>
+                    <div id="date">
+                      <p className="text-left">
+                        {new Date(Onereview.createdAt).toLocaleDateString(
+                          'es-AR'
+                        )}{' '}
+                      </p>
+                    </div>
+                    <div>
+                      <i className="bi bi-star">{Onereview.rating}</i>
+                    </div>
                   </div>
-                  <div id="date">
-                    <p className="text-left">
-                      {new Date(Onereview.createdAt).toLocaleDateString(
-                        "es-AR"
-                      )}{" "}
-                    </p>
+                  <div className="col-8" id="textReview">
+                    <p>"{Onereview.comment}"</p>
                   </div>
-                  <div>
-                    <i className="bi bi-star">{Onereview.rating}</i>
-                  </div>
-                </div>
-                <div className="col-8" id="textReview">
-                  <p>"{Onereview.comment}"</p>
-                </div>
                 </div>
               </div>
             </li>

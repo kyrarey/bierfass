@@ -1,22 +1,22 @@
-import React, { useState } from "react";
+import React, { useState } from 'react';
 
-import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 const Register = () => {
-  const [user, setUser] = useState("");
-  const [firstName, setFirstName] = useState("");
-  const [lastName, setLastName] = useState("");
-  const [password, setPassword] = useState("");
-  const [confPassword, setConfPassword] = useState("");
-  const [birthday, setBirthday] = useState("");
-  const [email, setEmail] = useState("");
+  const [user, setUser] = useState('');
+  const [firstName, setFirstName] = useState('');
+  const [lastName, setLastName] = useState('');
+  const [password, setPassword] = useState('');
+  const [confPassword, setConfPassword] = useState('');
+  const [birthday, setBirthday] = useState('');
+  const [email, setEmail] = useState('');
   const navigate = useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault();
     axios
-      .post("http://localhost:8000/api/users/register", {
+      .post('http://localhost:8000/api/users/register', {
         firstName: firstName,
         lastName: lastName,
         password: password,
@@ -27,15 +27,14 @@ const Register = () => {
       .then((res) => {
         setUser(res.data);
       });
-    navigate("/login");
+    navigate('/login');
   };
-
 
   return (
     <div class="container">
       <div class="col-sm-6 login-form pt-5">
         <h2>Registrate</h2>
-        <form onSubmit={handleSubmit} >
+        <form onSubmit={handleSubmit}>
           <div class="form-group col-md-6 pb-3">
             <label for="FirstName" class="form-label">
               Nombre

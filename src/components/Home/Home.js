@@ -1,20 +1,25 @@
-import React from "react";
-import axios from "axios";
-import ProductCard from "../ProductCard/ProductCard";
-import { useState, useEffect } from "react";
-import firstImg from "../../assets/home1.jpeg";
-import secondImg from "../../assets/home2.jpeg";
-import thirdImg from "../../assets/home3.webp";
+import firstImg from '../../assets/home1.jpeg';
+import secondImg from '../../assets/home2.jpeg';
+import thirdImg from '../../assets/home3.webp';
+import React from 'react';
+import axios from 'axios';
+import ProductCard from '../ProductCard/ProductCard';
+import CustomPagination from '../CustomPagination/CustomPagination';
+import { useState, useEffect } from 'react';
 
 const Home = () => {
   const [home, setHome] = useState([]);
+  const [page, setPage] = useState(1);
 
+  console.log(`http://localhost:8000/api/products/list/${page}`);
   useEffect(() => {
-    axios.get(`http://localhost:8000/api/products`).then((data) => {
-      setHome(data.data);
-      console.log(home);
-    });
-  }, []);
+    axios
+      .get(`http://localhost:8000/api/products/list/${page}`)
+      .then((data) => {
+        setHome(data.data);
+        console.log(home);
+      });
+  }, [page]);
 
   return (
     <div>
@@ -87,13 +92,18 @@ const Home = () => {
           <span class="visually-hidden">Next</span>
         </button>
       </div>
-      <section class="w-50 mx-auto text-center pt-5 pb-5" id="home"><h1 class="p-3 fs-2 border-top border-bottom border-2">Disfruta de una buena cerveza desde tu casa</h1>
-      <h3 class="p-3 fs-3">Nuestros productos</h3></section>
+      <section class="w-50 mx-auto text-center pt-5 pb-5" id="home">
+        <h1 class="p-3 fs-2 border-top border-bottom border-2">
+          Disfruta de una buena cerveza desde tu casa
+        </h1>
+        <h3 class="p-3 fs-3">Nuestros productos</h3>
+      </section>
       <div class="row row-cols-1 row-cols-md-4 g-4">
         {home.map((card) => (
           <ProductCard {...card} />
         ))}
       </div>
+      <CustomPagination setPage={setPage} page={page}></CustomPagination>
     </div>
   );
 };
