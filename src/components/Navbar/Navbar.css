@@ -1,34 +1,33 @@
-@import url('https://fonts.googleapis.com/css2?family=Oi&family=Roboto:ital@1&family=Tangerine&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Oi&family=Roboto:ital@1&family=Tangerine&display=swap");
 
-header {
-  background: url(./beerserving.jpg) no-repeat center;
-  background-size: cover;
-  min-height: 100vh;
-  padding: 220px;
-  margin-bottom: 50px;
+* {
+  font-family: "Roboto", sans-serif;
 }
 
-header .container {
-  background-color: oldlace;
-  padding: 220px;
+.navbar {
+  padding: 10px;
+  position: fixed;
+  width: 100%;
 }
 
-header h1 {
-  font-family: 'Oi', cursive;
-  font-size: 6em;
+.navbar-brand {
+  font-family: "Oi", cursive;
+  font-size: 2em;
   color: rgb(242, 147, 46);
 }
 
-header p {
-  font-family: 'Tangerine', cursive;
-  font-size: 2em;
-  color: rgb(62, 38, 13);
+.navbar-brand:hover {
+  color: rgb(74, 91, 219);
 }
 
-.lead {
-  font-size: 350%;
+.navbar-nav {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  padding: 10px;
 }
 
-/* .header .navbar {
-    background-color: transparent !important;
-} */
+.user-nav button {
+  margin: 7px;
+}

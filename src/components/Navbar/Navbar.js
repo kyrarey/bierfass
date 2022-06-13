@@ -13,7 +13,7 @@ import { Link } from 'react-router-dom';
 const Navbar = () => {
   let navigate = useNavigate();
   const [search, setSearch] = useState('');
-  const { setProductSearch } = useGlobalContext();
+  const { user, setProductSearch } = useGlobalContext();
 
   const onClickHandler = (e) => {
     e.preventDefault();
@@ -24,11 +24,11 @@ const Navbar = () => {
         navigate('/search');
       });
 
-   //deslogueo, abajo esta el boton de desloguear, pueden modificarlo como gusten 
-
-  }; const handleLogout = (e) => {
+    //deslogueo, abajo esta el boton de desloguear, pueden modificarlo como gusten
+  };
+  const handleLogout = (e) => {
     e.preventDefault();
-    axios.post("/api/users/logout").then((res) => {
+    axios.post('/api/users/logout').then((res) => {
       alert(`logged out`);
       localStorage.removeItem('user');
     });
@@ -68,12 +68,17 @@ const Navbar = () => {
               <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                 <li>
                   <a class="dropdown-item" href="#">
-                    Lager
+                    Rubia
                   </a>
                 </li>
                 <li>
                   <a class="dropdown-item" href="#">
-                    Ale
+                    Negra
+                  </a>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="#">
+                    Roja
                   </a>
                 </li>
               </ul>
@@ -101,6 +106,7 @@ const Navbar = () => {
 
             <div class="navbar-nav ml-auto">
               <div class="user-nav">
+                {/*  {user} ? (
                 <Link to="/register">
                   <button class="btn btn-outline-light" type="submit">
                     Registrarse
@@ -111,7 +117,7 @@ const Navbar = () => {
                     Iniciar sesión
                   </button>
                 </Link>
-                {/* cuando el user ya esta logueado se muestran
+                ) : (
                 <Link to="/cart">
                   <button class="btn btn-outline-light" type="submit">
                     <ShoppingCartIcon />
@@ -119,7 +125,7 @@ const Navbar = () => {
                 </Link>
                 <Link to="/me">
                   <button class="btn btn-outline-light" type="submit">
-                    <AccountCircleIcon />
+                    user.name <AccountCircleIcon />
                   </button>
                 </Link> 
                 <button onClick={handleLogout}>logout</button>*/}
