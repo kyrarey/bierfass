@@ -19,9 +19,9 @@ const UserCard = ({
   };
 
   return (
-    <div className="container">
+    <div>
       <div class="col">
-        <div class="card imgProd">
+        <div align="center" class="card imgProd">
           <img src={profilePhoto} class="card-img-top" alt="..."></img>
           <div class="card-body">
             <h5 class="card-title">{firstName + ' ' + lastName}</h5>

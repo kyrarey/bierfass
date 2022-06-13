@@ -68,3 +68,9 @@
 .cart.active {
   background-color: rgb(26, 57, 107);
 }
+
+.cardSize {
+  width: 300px;
+  height: 600px;
+  margin: 30px;
+}
