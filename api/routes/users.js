@@ -48,15 +48,39 @@ router.get('/me', (req, res) => {
 });
 
 //pasar usuario a admin
-router.put('/admin/:id', (req, res) => {
-  Users.findByPk({ where: { id: req.params.id } })
-    .then((user) => {
-      user.update(!req.admin);
-      res.status(200).send(user);
+router.put('/admin/:id', (req, res, next) => {
+  const { id } = req.params;
+
+  const response = (resUser) => ({
+    id,
+    firstName: resUser.contente,
+    lastName: resUser.contente,
+    admin: resUser.contente,
+    email: resUser.contente,
+    profilePhoto: resUser.contente,
+  });
+
+  Users.update(
+    {
+      firstName: req.body.firstName,
+      lastName: req.body.lastName,
+      profilePhoto: req.body.profilePhoto,
+      admin: req.body.admin,
+      email: req.body.email,
+    },
+    {
+      where: { id: req.params.id },
+      returning: true,
+    }
+  )
+    .then(([rows, result]) => {
+      console.log(result[0]);
+      res
+        .status(201)
+        .send(response(result[0]))
+        .status(202);
     })
-    .catch((err) => {
-      res.status(400).send(err);
-    });
+    .catch(next);
 });
 
 //como admin para eliminar usuarios
@@ -76,6 +100,16 @@ router.get('/admin/users', (req, res) => {
   Users.findAll()
     .then((users) => {
       res.send(users);
+    })
+    .catch((err) => {
+      res.status(400).send(err);
+    });
+});
+
+router.get('/admin/:id', (req, res) => {
+  Users.findAll({ where: { id: req.params.id } })
+    .then((products) => {
+      res.send(products);
     })
     .catch((err) => {
       res.status(400).send(err);

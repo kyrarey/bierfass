@@ -13,9 +13,10 @@ import { Link } from 'react-router-dom';
 const Navbar = () => {
   let navigate = useNavigate();
   const [search, setSearch] = useState('');
-  const { setProductSearch } = useGlobalContext();
+  const { user, setProductSearch } = useGlobalContext();
 
   const onClickHandler = (e) => {
+    console.log(user);
     e.preventDefault();
     axios
       .post(`http://localhost:8000/api/products/search`, { search })
@@ -25,10 +26,15 @@ const Navbar = () => {
       });
   };
 
+  const onCLickHome = (e) => {
+    e.preventDefault();
+    navigate('/');
+  };
+
   return (
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
       <div class="container-fluid">
-        <a class="navbar-brand" href="/">
+        <a onClick={onCLickHome} class="navbar-brand" href="">
           <SportsBarIcon fontSize="large" />
           Bierfass
         </a>
@@ -91,18 +97,34 @@ const Navbar = () => {
             </form>
 
             <div class="navbar-nav ml-auto">
-              <div class="user-nav">
-                <Link to="/register">
-                  <button class="btn btn-outline-light" type="submit">
-                    Registrarse
-                  </button>
-                </Link>
-                <Link to="/login">
-                  <button class="btn btn-outline-light" type="submit">
-                    Iniciar sesión
-                  </button>
-                </Link>
-                {/* cuando el user ya esta logueado se muestran
+              {!user.id ? (
+                <div class="user-nav">
+                  <Link to="/register">
+                    <button class="btn btn-outline-light" type="submit">
+                      Registrarse
+                    </button>
+                  </Link>
+                  <Link to="/login">
+                    <button class="btn btn-outline-light" type="submit">
+                      Iniciar sesión
+                    </button>
+                  </Link>
+                </div>
+              ) : (
+                <div>
+                  <Link to="/cart">
+                    <button class="btn btn-outline-light" type="submit">
+                      <ShoppingCartIcon />
+                    </button>
+                  </Link>
+                  <Link to="/me">
+                    <button class="btn btn-outline-light" type="submit">
+                      <AccountCircleIcon />
+                    </button>
+                  </Link>
+                </div>
+              )}
+              {/* cuando el user ya esta logueado se muestran
                 <Link to="/cart">
                   <button class="btn btn-outline-light" type="submit">
                     <ShoppingCartIcon />
@@ -113,7 +135,6 @@ const Navbar = () => {
                     <AccountCircleIcon />
                   </button>
                 </Link> */}
-              </div>
             </div>
           </div>
         </div>
