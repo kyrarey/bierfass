@@ -1,19 +1,19 @@
-import axios from 'axios';
-import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { useGlobalContext } from '../../context/globalUserContext';
-import React from 'react';
-import './Navbar.css';
-import SearchIcon from '@mui/icons-material/Search';
-import SportsBarIcon from '@mui/icons-material/SportsBar';
-import AccountCircleIcon from '@mui/icons-material/AccountCircle';
-import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
-import { Link } from 'react-router-dom';
+import axios from "axios";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { useGlobalContext } from "../../context/globalUserContext";
+import React from "react";
+import "./Navbar.css";
+import SearchIcon from "@mui/icons-material/Search";
+import SportsBarIcon from "@mui/icons-material/SportsBar";
+import AccountCircleIcon from "@mui/icons-material/AccountCircle";
+import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
   let navigate = useNavigate();
-  const [search, setSearch] = useState('');
-  const { setProductSearch } = useGlobalContext();
+  const [search, setSearch] = useState("");
+  const { user, setProductSearch } = useGlobalContext();
 
   const onClickHandler = (e) => {
     e.preventDefault();
@@ -21,7 +21,7 @@ const Navbar = () => {
       .post(`http://localhost:8000/api/products/search`, { search })
       .then((data) => {
         setProductSearch(data.data);
-        navigate('/search');
+        navigate("/search");
       });
   };
 
@@ -59,12 +59,17 @@ const Navbar = () => {
               <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                 <li>
                   <a class="dropdown-item" href="#">
-                    Lager
+                    Rubia
                   </a>
                 </li>
                 <li>
                   <a class="dropdown-item" href="#">
-                    Ale
+                    Negra
+                  </a>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="#">
+                    Roja
                   </a>
                 </li>
               </ul>
@@ -92,6 +97,7 @@ const Navbar = () => {
 
             <div class="navbar-nav ml-auto">
               <div class="user-nav">
+                {/*  {user} ? (
                 <Link to="/register">
                   <button class="btn btn-outline-light" type="submit">
                     Registrarse
@@ -102,7 +108,7 @@ const Navbar = () => {
                     Iniciar sesión
                   </button>
                 </Link>
-                {/* cuando el user ya esta logueado se muestran
+                ) : (
                 <Link to="/cart">
                   <button class="btn btn-outline-light" type="submit">
                     <ShoppingCartIcon />
@@ -110,9 +116,10 @@ const Navbar = () => {
                 </Link>
                 <Link to="/me">
                   <button class="btn btn-outline-light" type="submit">
-                    <AccountCircleIcon />
+                    user.name <AccountCircleIcon />
                   </button>
-                </Link> */}
+                </Link>
+                ) */}
               </div>
             </div>
           </div>
