@@ -7,6 +7,7 @@ import ProductCard from '../ProductCard/ProductCard';
 import CustomPagination from '../CustomPagination/CustomPagination';
 import { useState, useEffect } from 'react';
 
+
 const Home = () => {
   const [home, setHome] = useState([]);
   const [page, setPage] = useState(1);
