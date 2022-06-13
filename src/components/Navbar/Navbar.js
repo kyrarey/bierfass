@@ -23,6 +23,15 @@ const Navbar = () => {
         setProductSearch(data.data);
         navigate('/search');
       });
+
+   //deslogueo, abajo esta el boton de desloguear, pueden modificarlo como gusten 
+
+  }; const handleLogout = (e) => {
+    e.preventDefault();
+    axios.post("/api/users/logout").then((res) => {
+      alert(`logged out`);
+      localStorage.removeItem('user');
+    });
   };
 
   return (
@@ -112,7 +121,8 @@ const Navbar = () => {
                   <button class="btn btn-outline-light" type="submit">
                     <AccountCircleIcon />
                   </button>
-                </Link> */}
+                </Link> 
+                <button onClick={handleLogout}>logout</button>*/}
               </div>
             </div>
           </div>

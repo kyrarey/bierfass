@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import ReCAPTCHA from 'react-google-recaptcha';
 
 const Login = () => {
-  const { user, setUser } = useGlobalContext();
+  const { setUser } = useGlobalContext();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const captcha = useRef(null);

@@ -14,9 +14,11 @@ router.get('/:productId', (req, res) => {
 
 
 //send review
-router.post('/:idUser/:productId', (req, res) => {
+router.post('/:productId', (req, res) => {
 
-  ReviewProduct.findOne({ where: { userId: req.params.idUser, productId: req.params.productId } }).then(
+  console.log(req.body);
+
+  ReviewProduct.findOne({ where: { userId: req.body.userId, productId: req.params.productId } }).then(
     (result) => {
       
       if (result === null) {

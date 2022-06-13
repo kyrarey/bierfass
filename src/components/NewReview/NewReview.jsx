@@ -4,14 +4,17 @@ import Navbar from "../Navbar/Navbar";
 import "./newReview.css";
 import { useParams } from "react-router";
 import { useState } from "react";
+import { useGlobalContext } from '../../context/globalUserContext';
 
 
 const NewReview = () => {
   
-  const { userId, productId } = useParams();
+  const {productId } = useParams();
   const [comment, setComment] = useState("");
   const [rating, setRating] = useState("");
+  const { user } = useGlobalContext();
 
+ 
 
   const handleChange = (e) => {
     const { value } = e.target;
@@ -28,17 +31,17 @@ const NewReview = () => {
   
     e.preventDefault();
     axios
-      .post(`/api/reviews/${userId}/${productId}`, {
+      .post(`/api/reviews/${productId}`, {
         comment: comment,
         rating: rating,
-        userId: userId,
+        userId: user.id,
         productId: productId,
       })
       .then(() => {
         alert("creaste exitosamente tu comentario");
       })
       .catch(() => {
-        alert("no pudimos crear tu comentario, intenta de nuevo");
+        alert("Ya dejaste tu comentario sobre este producto");
       });
   };
 

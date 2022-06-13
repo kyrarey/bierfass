@@ -16,14 +16,15 @@ router.post('/register', (req, res) => {
 
 //autenticar usuario
 router.post('/login', passport.authenticate('local'), (req, res) => {
-  console.log('entreee');
   res.send(req.user);
 });
 
 //logout usuario
 router.post('/logout', (req, res) => {
-  req.logout(); //funcion de passport
-  res.sendStatus(200);
+  req.logout(function(err) {
+    if (err) { return next(err); }
+    res.redirect('/');
+  }); //funcion de passport
 });
 
 //editar usuario

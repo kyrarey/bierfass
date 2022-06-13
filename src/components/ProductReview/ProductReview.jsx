@@ -8,8 +8,8 @@ import { useGlobalContext } from '../../context/globalUserContext';
 
 const ProductReview = () => {
   const { user } = useGlobalContext();
-  console.log(user);
-  const { userId, productId } = useParams();
+  console.log("user",user);
+  const { productId } = useParams();
   const [review, setReview] = useState('');
 
   console.log(review);
@@ -64,7 +64,7 @@ const ProductReview = () => {
         )}
       </ul>
       <div>
-        <Link to={`/newReview/${userId}/${productId}`}>
+        <Link to={`/newReview/${productId}`}>
           <button type="button" class="btn btn-default cart">
             agregar review
           </button>
