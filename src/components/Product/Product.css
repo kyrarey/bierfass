@@ -1,66 +1,70 @@
 .container {
-    margin-top: 100px;
-    
-  }
-  
-  .information {
-    width: 50px;
-    color: #555;
-    font-size: 18px;
-    font-weight: bold;
-    padding-top: 5px;
-    padding-bottom: 5px;
-  }
-  
-  .col-md-7 h2 {
-    color: #555;
-    font-size: 30px;
-    font-weight: bold;
-    padding-top: 5px;
-    padding-bottom: 5px;
-  }
-  
-  .price {
-    color: #555;
-    font-size: 26px;
-    font-weight: bold;
-    padding-top: 2px;
-    padding-bottom: 2px;
-  }
-  
-  label {
-    padding-right: 3px;
-  }
+  box-sizing: border-box;
+  margin-top: 10px;
+  width: 100%;
+  color: #555;
+}
 
-  .btn-qty {
-    background: #f7cd25;
-    color: #ffffff;
-    box-sizing: border-box;
-    padding: 8px 8px;
-    font-size: 4px;
-    cursor: pointer;
-    margin-left: 3px;
-    margin-right: 3px;
-  }
-  
-  .cart {
-    background: #f7cd25;
-    color: #ffffff;
-    font-size: 15px;
-    margin-left: 20px;
-  }
-  
-  .cart:hover {
-    background-color: #ffffff;
-    transition: 0.7s;
-  }
-  .cart:focus {
-    outline-color: transparent;
-    outline-style: solid;
-    box-shadow: 0 0 0 1.5px #0f7173;
-    transition: 0.7s;
-  }
-  .cart.active {
-    background-color: #0f7173;
-  }
-  
+.title {
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.subtitle {
+  font-size: 24px;
+  font-weight: bold;
+  padding-bottom: 8px;
+}
+
+.price {
+  font-size: 26px;
+  font-weight: bold;
+  padding-top: 2px;
+  padding-bottom: 2px;
+}
+
+.quantity {
+  position: relative;
+  max-height: 40px;
+  align-items: center;
+  text-align: justify;
+  width: 40%;
+}
+.form-control-plaintext {
+  padding-left: 15%;
+  padding-right: 15%;
+  width: 15%;
+  display: contents;
+  text-align: center;
+}
+
+.btn-qty {
+  background: #f7cd25;
+  color: #ffffff;
+  box-sizing: border-box;
+  padding: 8px 8px;
+  font-size: 4px;
+  cursor: pointer;
+  margin: 10px;
+}
+
+.cart {
+  background: #f7cd25;
+  color: #ffffff;
+  font-size: 15px;
+  margin-left: 20px;
+}
+
+.cart:hover {
+  background-color: #ffffff;
+  transition: 0.7s;
+}
+.cart:focus {
+  outline-color: transparent;
+  outline-style: solid;
+  box-shadow: 0 0 0 1.5px rgb(26, 57, 107);
+  transition: 0.7s;
+}
+.cart.active {
+  background-color: rgb(26, 57, 107);
+}
