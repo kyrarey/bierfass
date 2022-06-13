@@ -58,111 +58,82 @@ const Product = () => {
     <>
       <div className="container">
         <div class="row">
-          <div class="col-4">
-            <div
-              id="carouselExampleControls"
-              class="carousel slide"
-              data-bs-ride="carousel"
-            >
-              <div class="carousel-inner">
-                <img
-                  src={product.img}
-                  class="d-block w-100"
-                  alt="First slide"
-                />
-              </div>
-              <button
-                class="carousel-control-prev"
-                type="button"
-                data-bs-target="#carouselExampleControls"
-                data-bs-slide="prev"
-              >
-                <span
-                  class="carousel-control-prev-icon"
-                  aria-hidden="true"
-                ></span>
-                <span class="visually-hidden">Previous</span>
-              </button>
-              <button
-                class="carousel-control-next"
-                type="button"
-                data-bs-target="#carouselExampleControls"
-                data-bs-slide="next"
-              >
-                <span
-                  class="carousel-control-next-icon"
-                  aria-hidden="true"
-                ></span>
-                <span class="visually-hidden">Next</span>
-              </button>
-            </div>
+          <div class="col-sm-6">
+            <img src={product.img} alt="cerveza" />
           </div>
-          <div class="col-8">
-            <p class="information text-md-left">{product.type}</p>
-            <h2>{product.name}</h2>
-            <p>
-              <b>Marca: </b>
-              {product.brand}
-            </p>
-            <p>
-              <b>Tamaño: </b>
-              {product.size}
-            </p>
-            <p class="price">$ {product.price}</p>
-            <p>
-              <img src={location} />
-              {product.origin}
-            </p>
-            <p>
-              <img src={alcohol} />
-              {product.alcoholPercentage}
-            </p>
-            <p>
-              <b>Disponibilidad: </b> 150 unidades
-            </p>
-            <p>
-              <b>Puntuacion: </b> {starRating} estrellas
-              <i className="bi bi-star"></i>
-            </p>
-            <label>
-              <b>Cantidad: </b>
-            </label>
-            <button
-              type="submit"
-              onClick={handleDecrease}
-              class="btn btn-default btn-qty"
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="16"
-                height="16"
-                fill="currentColor"
-                class="bi bi-dash"
-                viewBox="0 0 16 16"
-              >
-                <path d="M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8z" />
-              </svg>
-            </button>
-            <div className="form-control text-center">{quantity}</div>
-            <button
-              type="submit"
-              onClick={handleIncrease}
-              class="btn btn-default btn-qty"
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="16"
-                height="16"
-                fill="currentColor"
-                class="bi bi-plus"
-                viewBox="0 0 16 16"
-              >
-                <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z" />
-              </svg>
-            </button>
-            <button type="button" class="btn btn-default cart">
-              Agregar al carrito
-            </button>
+
+          <div class="col-sm-6">
+            <div class="card">
+              <div class="card-body">
+                <h1 class="title">{product.type}</h1>
+                <h2 class="subtitle text-md-left">{product.name}</h2>
+                <p>
+                  <b>Marca: </b>
+                  {product.brand}
+                </p>
+                <p>
+                  <b>Tamaño: </b>
+                  {product.size} ml
+                </p>
+                <p class="price">$ {product.price}</p>
+                <p>
+                  <img src={location} width="35" />
+                  {product.origin}
+                </p>
+                <p>
+                  <img src={alcohol} width="35" />
+                  {product.alcoholPercentage}
+                </p>
+                <p>
+                  <b>Disponibilidad: </b> 150 unidades
+                </p>
+                <p>
+                  <b>Puntuación: </b> {starRating} estrellas
+                  <i className="bi bi-star"></i>
+                </p>
+                <span class="quantity">
+                  <span>
+                    <b>Cantidad: </b>
+                  </span>
+                  <button
+                    type="submit"
+                    onClick={handleDecrease}
+                    class="btn btn-default btn-qty"
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="16"
+                      height="16"
+                      fill="currentColor"
+                      class="bi bi-dash"
+                      viewBox="0 0 16 16"
+                    >
+                      <path d="M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8z" />
+                    </svg>
+                  </button>
+                  <span class="form-control-plaintext">{quantity} </span>
+                  <button
+                    type="submit"
+                    onClick={handleIncrease}
+                    class="btn btn-default btn-qty"
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="16"
+                      height="16"
+                      fill="currentColor"
+                      class="bi bi-plus"
+                      viewBox="0 0 16 16"
+                    >
+                      <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z" />
+                    </svg>
+                  </button>
+                  <button type="button" class="btn btn-default cart">
+                    Agregar al carrito
+                  </button>
+                </span>
+              </div>
+            </div>
           </div>
         </div>
       </div>

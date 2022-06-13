@@ -16,6 +16,7 @@ const Navbar = () => {
   const { user, setProductSearch } = useGlobalContext();
 
   const onClickHandler = (e) => {
+    console.log(user);
     e.preventDefault();
     axios
       .post(`http://localhost:8000/api/products/search`, { search })
@@ -32,6 +33,11 @@ const Navbar = () => {
       alert(`logged out`);
       localStorage.removeItem('user');
     });
+  };
+
+  const onCLickHome = (e) => {
+    e.preventDefault();
+    navigate('/');
   };
 
   return (

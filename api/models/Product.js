@@ -17,6 +17,7 @@ Product.init(
     rating: {
       type: DataTypes.INTEGER,
     },
+    //rating por stock
     type: {
       type: DataTypes.STRING,
     },
