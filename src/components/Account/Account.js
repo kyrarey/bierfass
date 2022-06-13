@@ -4,7 +4,8 @@ import { useGlobalContext } from '../../context/globalUserContext';
 
 const Account = () => {
   const { user } = useGlobalContext();
-  console.log(user);
+  console.log('SOY USER', user);
+
   return (
     <div>
       {!user.admin ? (
@@ -107,7 +108,7 @@ const Account = () => {
         </div>
       ) : (
         <div>
-          <h1 align="center">Bienvenido {usuario.name}</h1>
+          <h1 align="center">Bienvenido {user.name}</h1>
           <br></br>
           <br></br>
           <h3 align="center">Que desea hacer?</h3>

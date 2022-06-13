@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useGlobalContext } from '../../context/globalUserContext';
 import React from 'react';
@@ -13,7 +13,9 @@ import { Link } from 'react-router-dom';
 const Navbar = () => {
   let navigate = useNavigate();
   const [search, setSearch] = useState('');
-  const { user, setProductSearch } = useGlobalContext();
+  const { user, setUser, setProductSearch } = useGlobalContext();
+
+  const usuarioStorage = JSON.parse(localStorage.getItem('user'));
 
   const onClickHandler = (e) => {
     console.log(user);
@@ -27,13 +29,17 @@ const Navbar = () => {
 
     //deslogueo, abajo esta el boton de desloguear, pueden modificarlo como gusten
   };
-  const handleLogout = (e) => {
-    e.preventDefault();
-    axios.post('/api/users/logout').then((res) => {
-      alert(`logged out`);
-      localStorage.removeItem('user');
-    });
-  };
+  // const handleLogout = (e) => {
+  //   e.preventDefault();
+  //   useEffect(() => {
+  //     axios.post('/api/users/logout').then((res) => {
+  //       alert(`logged out`);
+  //       localStorage.removeItem('user');
+  //       setUser({});
+  //       navigate('/');
+  //     });
+  //   }, [user]);
+  // };
 
   const onCLickHome = (e) => {
     e.preventDefault();
@@ -120,29 +126,34 @@ const Navbar = () => {
               </form>
               <div class="navbar-nav ml-auto">
                 <div class="user-nav">
-                  {/*  {user} ? (
-                <Link to="/register">
-                  <button class="btn btn-outline-light" type="submit">
-                    Registrarse
-                  </button>
-                </Link>
-                <Link to="/login">
-                  <button class="btn btn-outline-light" type="submit">
-                    Iniciar sesión
-                  </button>
-                </Link>
-                ) : (
-                <Link to="/cart">
-                  <button class="btn btn-outline-light" type="submit">
-                    <ShoppingCartIcon />
-                  </button>
-                </Link>
-                <Link to="/me">
-                  <button class="btn btn-outline-light" type="submit">
-                    user.name <AccountCircleIcon />
-                  </button>
-                </Link> 
-                <button onClick={handleLogout}>logout</button>*/}
+                  {!usuarioStorage.firstName ? (
+                    <div>
+                      <Link to="/register">
+                        <button class="btn btn-outline-light" type="submit">
+                          Registrarse
+                        </button>
+                      </Link>
+                      <Link to="/login">
+                        <button class="btn btn-outline-light" type="submit">
+                          Iniciar sesión
+                        </button>
+                      </Link>
+                    </div>
+                  ) : (
+                    <div>
+                      <Link to="/cart">
+                        <button class="btn btn-outline-light" type="submit">
+                          <ShoppingCartIcon />
+                        </button>
+                      </Link>
+                      <Link to="/me">
+                        <button class="btn btn-outline-light" type="submit">
+                          {usuarioStorage.firstName} <AccountCircleIcon />
+                        </button>
+                      </Link>
+                      {/* <button onClick={handleLogout}>logout</button> */}
+                    </div>
+                  )}
                 </div>
               </div>
             </div>

@@ -12,7 +12,7 @@ export const useGlobalContext = () => {
 };
 
 export const GlobalProvider = ({ children }) => {
-  const [user, setUser] = useState(JSON.parse(localStorage.getItem("user")));
+  const [user, setUser] = useState({});
   const [productSearch, setProductSearch] = useState([]);
 
   return (
