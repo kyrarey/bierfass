@@ -3,7 +3,6 @@ const router = express.Router();
 const Sequelize = require('sequelize');
 const Product = require('../models/Product');
 const Op = Sequelize.Op;
-const Products = require('../models/Product');
 
 //devuelve productos de la categoria pasada por parametro
 router.get('/:id', (req, res) => {

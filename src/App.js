@@ -21,6 +21,7 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import { GlobalProvider } from './context/globalUserContext';
 import ReCAPTCHA from 'react-google-recaptcha';
 import NewReview from './components/NewReview/NewReview.jsx';
+import SendOrder from './components/SendOrder/SendOrder';
 
 function App() {
   return (
@@ -37,7 +38,7 @@ function App() {
             <Route path="/logout" element={<Logout />} />
             <Route path="/me" element={<Account />} />
             <Route path="/search" element={<Search />} />
-            <Route path="/cart" element={<Cart />} />
+            <Route path="/cart/:userId" element={<Cart />} />
             <Route path="/product/:productId" element={<Product />} />
             <Route path="/users" element={<Users />} />
             <Route path="/reviews" element={<Reviews />} />
@@ -45,6 +46,7 @@ function App() {
             <Route path="/editUser/:id" element={<SendEditUser />} />
             <Route path="/editProduct" element={<EditProduct />} />
             <Route path="/loadProduct" element={<LoadProduct />} />
+            <Route path="/sendOrder" element={<SendOrder />} />
           </Routes>
           <Footer />
         </>

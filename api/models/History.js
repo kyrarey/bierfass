@@ -1,6 +1,6 @@
 const { DataTypes, Model } = require("sequelize");
 const db = require("../config/dbConnection");
-const ShoppingCar = require("./ShoppingCar")
+const User = require("./Users");
 
 
 class History extends Model {}
@@ -14,6 +14,6 @@ History.init({
     modelName: 'history'
 })
 
-ShoppingCar.hasOne(History)
+History.belongsTo(User)
 
-module.exports = Address
+module.exports = History

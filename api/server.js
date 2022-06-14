@@ -7,10 +7,6 @@ const routes = require("./routes/index");
 
 //
 const User = require("./models/Users");
-const Product = require("./models/Product");
-const ShoppingCar = require("./models/ShoppingCar");
-const Address = require("./models/Address");
-const ReviewProduct = require("./models/ReviewProduct");
 
 //
 const cors = require("cors");

@@ -31,9 +31,12 @@ const Login = () => {
       })
       .then((res) => {
         setUser(res.data);
-        localStorage.setItem('user', JSON.stringify(res.data));
+        localStorage.setItem('user', JSON.stringify(res.data))
+        navigate('/me');
+      }).catch(()=>{
+        alert('error')
       });
-    navigate('/me');
+    
   };
 
   return (
