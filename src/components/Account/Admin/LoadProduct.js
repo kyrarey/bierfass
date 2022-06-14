@@ -9,6 +9,14 @@ const LoadProduct = () => {
   var usuario = localStorage.getItem("user");
   usuario = JSON.parse(usuario);
 
+  const options = [
+    { value: "", text: "--Choose an option--" },
+    { value: "rubia", text: "Rubia" },
+    { value: "negra", text: "Negra" },
+    { value: "roja", text: "Roja" },
+    { value: "sinTACC", text: "Sin T.A.C.C." },
+  ];
+
   const [newImg, setNewImg] = useState("");
   const [newName, setNewName] = useState("");
   const [newOrigin, setNewOrigin] = useState("");
@@ -18,7 +26,8 @@ const LoadProduct = () => {
   const [newAlcoholPercentage, setNewAlcoholPercentage] = useState(0);
   const [newBrand, setNewBrand] = useState("");
 
-  useEffect(() => {
+  const onClick = (e) => {
+    e.preventDefault();
     axios
       .post(`http://localhost:8000/api/products/add`, {
         name: newName,
@@ -40,24 +49,14 @@ const LoadProduct = () => {
         setNewAlcoholPercentage(data.alcoholPercentage);
         setNewBrand(data.brand);
         console.log(data);
-      });
-  }, []);
-
-  const onClick = () => {
-    axios
-      .put(`http://localhost:8000/api/products`, {
-        name: newName,
-        origin: newOrigin,
-        price: newPrice,
-        size: newSize,
-        type: newType,
-        alcoholPercentage: newAlcoholPercentage,
-        brand: newBrand,
-        urlImg: newImg,
       })
-      .then((res) => {
+      .then(() => {
         alert("Producto agregado");
         navigate("/me");
+      })
+      .catch((err) => {
+        alert("Error al agregar producto");
+        console.log(err);
       });
   };
 
@@ -94,7 +93,9 @@ const LoadProduct = () => {
                 Tipo
               </label>
               <select id="newType" class="form-select">
-                <option onChange={(e) => setNewType("Rubia")}>Rubia</option>
+                <option selected onChange={(e) => setNewType("Rubia")}>
+                  Rubia
+                </option>
                 <option onChange={(e) => setNewType("Roja")}>Roja</option>
                 <option onChange={(e) => setNewType("Negra")}>Negra</option>
                 <option onChange={(e) => setNewType("sin T.A.C.C")}>
@@ -116,7 +117,7 @@ const LoadProduct = () => {
             </div>
             <div class="col-4">
               <label for="newSize" class="form-label">
-                TamaÃąo
+                Tamaño
               </label>
               <input
                 type="text"
@@ -159,7 +160,7 @@ const LoadProduct = () => {
                 type="text"
                 class="form-control"
                 id="newOrigin"
-                placeholder="PaÃ­s"
+                placeholder="País"
                 onChange={(e) => setNewOrigin(e.target.value)}
               />
             </div>

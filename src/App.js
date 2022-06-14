@@ -31,7 +31,6 @@ function App() {
       <Router>
         <>
           <Navbar />
-          <Header />
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/newReview/:productId" element={<NewReview />} />

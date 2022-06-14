@@ -47,11 +47,13 @@ const Navbar = () => {
 
   return (
     <>
-      <section className="js-section-advertising section-advertising">
-        <div className="container-sm">
-          <div className="row-fluid">
-            <div className="col text-center">
-              "BEBER CON MODERACIÓN. PROHIBIDA SU VENTA A MENORES DE 18 AÑOS"
+      <section class="js-section-advertising section-advertising">
+        <div class="banner">
+          <div class="container-fluid">
+            <div class="row-fluid">
+              <div class="col text-center">
+                "BEBER CON MODERACIÓN. PROHIBIDA SU VENTA A MENORES DE 18 AÑOS"
+              </div>
             </div>
           </div>
         </div>
