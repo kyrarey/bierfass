@@ -97,6 +97,7 @@ router.put('/:id', function(req, res, next) {
       size: req.body.size,
       price: req.body.price,
       name: req.body.name,
+      img: req.body.img,
     },
     {
       where: { id: req.params.id },
@@ -113,8 +114,8 @@ router.put('/:id', function(req, res, next) {
 });
 
 //Delete product
-router.delete('/', (req, res) => {
-  Product.destroy({ where: { idBeer: req.body.idBeer } }).then(() =>
+router.delete('/:id', (req, res) => {
+  Product.destroy({ where: { id: req.params.id } }).then(() =>
     res.sendStatus(202)
   );
 });

@@ -1,11 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { useGlobalContext } from '../../context/globalUserContext';
 
 const Account = () => {
-  const { user } = useGlobalContext();
-  console.log('SOY USER', user);
-
+  const user = !!localStorage.getItem('user')
+    ? JSON.parse(localStorage.getItem('user'))
+    : {};
   return (
     <div>
       {!user.admin ? (

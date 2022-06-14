@@ -21,6 +21,7 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import { GlobalProvider } from './context/globalUserContext';
 import ReCAPTCHA from 'react-google-recaptcha';
 import NewReview from './components/NewReview/NewReview.jsx';
+import SendEditProduct from './components/Account/Admin/SendEditProduct';
 
 function App() {
   return (
@@ -44,6 +45,7 @@ function App() {
             <Route path="/editUser" element={<EditUser />} />
             <Route path="/editUser/:id" element={<SendEditUser />} />
             <Route path="/editProduct" element={<EditProduct />} />
+            <Route path="/editProduct/:id" element={<SendEditProduct />} />
             <Route path="/loadProduct" element={<LoadProduct />} />
           </Routes>
           <Footer />

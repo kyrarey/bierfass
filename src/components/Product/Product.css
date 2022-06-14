@@ -72,11 +72,16 @@
 .image {
   max-height: 80%;
   max-width: 65%;
-  object-fit: fill
+  object-fit: fill;
 }
 
 .container_img {
   text-align: center;
   display: block;
+}
 
+.cardSize {
+  width: 300px;
+  height: 600px;
+  margin: 30px;
 }

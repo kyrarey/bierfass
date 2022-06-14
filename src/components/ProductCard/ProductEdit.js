@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 const ProductCard = ({
   id,
@@ -13,9 +13,9 @@ const ProductCard = ({
 }) => {
   let navigate = useNavigate();
 
-  const onClickInfo = (e) => {
+  const onClickEdit = (e) => {
     e.preventDefault();
-    navigate(`/product/${id}`);
+    navigate(`/editProduct/${id}`);
   };
 
   return (
@@ -30,8 +30,8 @@ const ProductCard = ({
             <p class="card-text">%{alcoholPercentage}</p>
             <p class="card-text">{type}</p>
             <p class="card-text">{brand}</p>
-            <button onClick={onClickInfo} class="btn btn-secondary">
-              Info
+            <button onClick={onClickEdit} class="btn btn-secondary">
+              Editar
             </button>
           </div>
         </div>

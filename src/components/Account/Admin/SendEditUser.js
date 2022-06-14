@@ -3,8 +3,6 @@ import axios from 'axios';
 import { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 
-import { logDOM } from '@testing-library/react';
-
 const SendEditUser = () => {
   let navigate = useNavigate();
   let id = useParams().id;
