@@ -22,7 +22,7 @@ Address.init({
         type: DataTypes.INTEGER
     },
     postalCode:{
-        type: DataTypes.STRING
+        type: DataTypes.INTEGER
     }
 },{
     sequelize:db,

@@ -15,7 +15,7 @@ const Navbar = () => {
   const [search, setSearch] = useState('');
   const { user, setUser, setProductSearch } = useGlobalContext();
 
-  const usuarioStorage = JSON.parse(localStorage.getItem('user'));
+ const usuarioStorage =  !!localStorage.getItem('user') ? JSON.parse(localStorage.getItem('user')) : {};
 
   const onClickHandler = (e) => {
     console.log(user);
