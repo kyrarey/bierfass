@@ -68,3 +68,15 @@
 .cart.active {
   background-color: rgb(26, 57, 107);
 }
+
+.image {
+  max-height: 80%;
+  max-width: 65%;
+  object-fit: fill
+}
+
+.container_img {
+  text-align: center;
+  display: block;
+
+}

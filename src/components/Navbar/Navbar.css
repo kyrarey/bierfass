@@ -1,9 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Oi&family=Roboto:ital@1&family=Tangerine&display=swap");
 
-* {
-  font-family: "Roboto", sans-serif;
-}
-
 .navbar {
   padding: 10px;
   position: fixed;

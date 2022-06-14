@@ -1,12 +1,12 @@
-import React, { useState, useEffect } from 'react';
-import './Product.css';
-import ProductReview from '../ProductReview/ProductReview';
-import alcohol from '../../assets/iconAlcohol.png';
-import location from '../../assets/location.png';
-import axios from 'axios';
-import { useParams } from 'react-router-dom';
-import { ReviewsSharp } from '@mui/icons-material';
-import { sum, values } from 'lodash';
+import React, { useState, useEffect } from "react";
+import "./Product.css";
+import ProductReview from "../ProductReview/ProductReview";
+import alcohol from "../../assets/iconAlcohol.png";
+import location from "../../assets/location.png";
+import axios from "axios";
+import { useParams } from "react-router-dom";
+import { ReviewsSharp } from "@mui/icons-material";
+import { sum, values } from "lodash";
 
 const Product = () => {
   const [product, setProduct] = useState([]);
@@ -46,22 +46,23 @@ const Product = () => {
     axios
       .get(`http://localhost:8000/api/products/${productId}`)
       .then((res) => {
-        console.log('SOY DATA', res.data[0]);
+        console.log("SOY DATA", res.data[0]);
         return res.data[0];
       })
       .then((product) => setProduct(product));
   }, []);
 
-  console.log('SOY PRODUCT', product);
+  console.log("SOY PRODUCT", product);
 
   return (
     <>
       <div className="container">
         <div class="row">
           <div class="col-sm-6">
-            <img src={product.img} alt="cerveza" />
+            <span class = "container_img">
+              <img class="image" src={product.img} alt="cerveza" />
+            </span>
           </div>
-
           <div class="col-sm-6">
             <div class="card">
               <div class="card-body">
@@ -73,7 +74,7 @@ const Product = () => {
                 </p>
                 <p>
                   <b>Tamaño: </b>
-                  {product.size} ml
+                  {product.size}
                 </p>
                 <p class="price">$ {product.price}</p>
                 <p>
@@ -82,7 +83,7 @@ const Product = () => {
                 </p>
                 <p>
                   <img src={alcohol} width="35" />
-                  {product.alcoholPercentage}
+                  {product.alcoholPercentage} %
                 </p>
                 <p>
                   <b>Disponibilidad: </b> 150 unidades

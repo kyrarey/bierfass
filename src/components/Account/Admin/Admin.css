@@ -1,0 +1,39 @@
+.loadProducts .container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 60px;
+    border: 1px solid #555;
+    margin-bottom: 30px;
+  }
+  
+  .loadProducts h3 {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #555;
+    margin: 20px;
+  }
+  
+  .cart {
+    background: #f7cd25;
+    color: #ffffff;
+    font-size: 15px;
+    margin-left: 20px;
+  }
+  
+  .cart:hover {
+    background-color: #ea8826;
+    transition: 0.7s;
+  }
+  .cart:focus {
+    outline-color: transparent;
+    outline-style: solid;
+    box-shadow: 0 0 0 1.5px rgb(26, 57, 107);
+    transition: 0.7s;
+  }
+  .cart.active {
+    background-color: rgb(26, 57, 107);
+  }

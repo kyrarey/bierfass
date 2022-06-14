@@ -2,6 +2,7 @@ import React, { useState } from "react";
 
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import "./Register.css"
 
 const Register = () => {
   const [user, setUser] = useState("");
@@ -31,11 +32,11 @@ const Register = () => {
   };
 
   return (
-    <div class="container">
+    <div class="container register">
       <div class="row justify-content-center">
         <div class="col-sm-6 login-form">
-          <h2>Registrate</h2>
-          <form onSubmit={handleSubmit}>
+          <h2 class="title-register">Registrate</h2>
+          <form class="form" onSubmit={handleSubmit}>
             <div class="form-group col-md-6 pb-3">
               <label for="FirstName" class="form-label">
                 Nombre

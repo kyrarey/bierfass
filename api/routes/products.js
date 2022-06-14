@@ -49,17 +49,35 @@ router.post('/search', (req, res) => {
 });
 
 //Add product
-router.post('/', (req, res) => {
-  Product.findOne({
-    where: { idProductowner: req.body.idProductowner },
-  }).then((result) => {
-    if (result === null) {
-      Product.create(req.body).then((user) => res.status(201).send(user));
-    } else {
-      res.status(401).send();
-    }
-  });
+
+router.post("/add", (req, res) => {
+  Product.create({
+    name: req.body.name,
+    origin: req.body.origin,
+    price: req.body.price,
+    size: req.body.size,
+    type: req.body.type,
+    alcoholPercentage: req.body.alcoholPercentage,
+    brand: req.body.brand,
+    urlImg: req.body.img,
+  })
+    .then((product) => res.send(product))
+    .catch((err) => {
+      res.status(400).send(err);
+    });
 });
+
+// router.post('/', (req, res) => {
+//   Product.findOne({
+//     where: { idProductowner: req.body.idProductowner },
+//   }).then((result) => {
+//     if (result === null) {
+//       Product.create(req.body).then((user) => res.status(201).send(user));
+//     } else {
+//       res.status(401).send();
+//     }
+//   });
+// });
 
 //Modify product
 router.put('/:id', function(req, res, next) {

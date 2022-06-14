@@ -1,6 +1,6 @@
 import firstImg from '../../assets/home1.jpeg';
 import secondImg from '../../assets/home2.jpeg';
-import thirdImg from '../../assets/home3.webp';
+import thirdImg from '../../assets/home3.jpeg';
 import './Home.css';
 import React from 'react';
 import axios from 'axios';
