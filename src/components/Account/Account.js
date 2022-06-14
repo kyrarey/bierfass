@@ -1,16 +1,30 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
+import axios from "axios";
 
 const Account = () => {
-  const user = !!localStorage.getItem('user')
-    ? JSON.parse(localStorage.getItem('user'))
+  const usuarioStorage = !!localStorage.getItem("user")
+    ? JSON.parse(localStorage.getItem("user"))
     : {};
+
+  const [address, setAddress] = useState({});
+
+  useEffect(() => {
+    axios
+      .get(`http://localhost:8000/api/address/${usuarioStorage.id}`, {
+        address: address,
+      })
+      .then((res) => {
+        setAddress(res.data);
+      });
+  }, []);
+
   return (
     <div>
-      {!user.admin ? (
+      {!usuarioStorage.admin ? (
         <div class="container">
           <p class="sign-out text-center">
-            <span class="pb-4">Hola {user.firstName}&nbsp;</span>
+            <span class="pb-4">Hola {usuarioStorage.firstName}&nbsp;</span>
             |&nbsp;
             <a href="/logout" id="customerLogoutLink">
               Cerrar sesión
@@ -61,11 +75,11 @@ const Account = () => {
                 data-bs-parent="#accordionFlushExample"
               >
                 <div class="accordion-body">
-                  Nombre: {user.firstName}
+                  Nombre: {usuarioStorage.firstName}
                   <br></br>
-                  Apellido: {user.lastName}
+                  Apellido: {usuarioStorage.lastName}
                   <br></br>
-                  email: {user.email}
+                  email: {usuarioStorage.email}
                   <br></br>
                 </div>
               </div>
@@ -90,16 +104,19 @@ const Account = () => {
                 data-bs-parent="#accordionFlushExample"
               >
                 <div class="accordion-body">
-                  Calle:
+                  Calle: {address.street}
                   <br></br>
-                  Teléfono:
+                  Teléfono:{address.telephone}
                   <br></br>
-                  Ciudad:
+                  Ciudad: {address.city}
                   <br></br>
-                  Provincia:
+                  Provincia: {address.state}
                   <br></br>
-                  C.P.:
+                  C.P.:{address.postalCode}
                   <br></br>
+                  <p class="mt-2">
+                    <a href="/address">Cargá tus direcciones</a>
+                  </p>
                 </div>
               </div>
             </div>
@@ -107,20 +124,20 @@ const Account = () => {
         </div>
       ) : (
         <div>
-          <h1 align="center">Bienvenido {user.name}</h1>
+          <h1 align="center">Bienvenido {usuarioStorage.name}</h1>
           <br></br>
           <br></br>
           <h3 align="center">Que desea hacer?</h3>
           <br></br>
           <br></br>
           <div class="butonsAcount" align="center">
-            <Link to={'/editUser'}>
+            <Link to={"/editUser"}>
               <button class="btn btn-secondary">Editar usuarios</button>
             </Link>
-            <Link to={'/editProduct'}>
+            <Link to={"/editProduct"}>
               <button class="btn btn-warning">Editar Productos</button>
             </Link>
-            <Link to={'/loadProduct'}>
+            <Link to={"/loadProduct"}>
               <button class="btn btn-success">Cargar Productos</button>
             </Link>
           </div>
