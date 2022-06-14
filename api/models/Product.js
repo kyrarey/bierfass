@@ -1,12 +1,18 @@
 const { DataTypes, Model } = require('sequelize');
 const db = require('../config/dbConnection');
-const ShoppingCar = require('./ShoppingCar');
+
 
 class Product extends Model {}
 
 Product.init(
   {
     //esta no es al relacion con admin o no?
+    id:{ 
+      allowNull: false,
+      autoIncrement: true,
+      primaryKey: true,
+      type: DataTypes.INTEGER
+    },
     idProductowner: {
       type: DataTypes.INTEGER,
     },
@@ -46,8 +52,6 @@ Product.init(
   }
 );
 
-//esto no funciona como deberia, logica de carrito de compras
 
-ShoppingCar.hasMany(Product);
 
 module.exports = Product;

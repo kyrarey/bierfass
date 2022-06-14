@@ -5,23 +5,22 @@ const User = require("./Users")
 
 
 
-class ShoppingCar extends Model {}
+class ShoppingCart extends Model {}
 
-ShoppingCar.init({
+ShoppingCart.init({
     quantity:{
         type: DataTypes.INTEGER
     },
-    finalPrice:{
+    price:{
         type: DataTypes.INTEGER
     }
 },{
     sequelize:db,
-    modelName: 'shoppingCar'
+    modelName: 'shoppingCart'
 });
 
 
-User.hasOne(ShoppingCar)
+ShoppingCart.belongsTo(User);
+ShoppingCart.belongsTo(Product);
 
-
-
-module.exports = ShoppingCar
+module.exports = ShoppingCart

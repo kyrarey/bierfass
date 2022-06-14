@@ -5,15 +5,17 @@ import alcohol from "../../assets/iconAlcohol.png";
 import location from "../../assets/location.png";
 import axios from "axios";
 import { useParams } from "react-router-dom";
-import { ReviewsSharp } from "@mui/icons-material";
-import { sum, values } from "lodash";
+import { useNavigate } from "react-router-dom";
 
 const Product = () => {
   const [product, setProduct] = useState([]);
   const [quantity, setQuantity] = useState(1);
-
+  const usuarioStorage = !!localStorage.getItem("user")
+    ? JSON.parse(localStorage.getItem("user"))
+    : {};
   const { productId } = useParams();
   const [reviews, setReviews] = useState([]);
+  const navigate = useNavigate();
   let sum = 0;
 
   useEffect(() => {
@@ -42,7 +44,6 @@ const Product = () => {
   };
 
   useEffect(() => {
-    console.log(`http://localhost:8000/api/products/${productId}`);
     axios
       .get(`http://localhost:8000/api/products/${productId}`)
       .then((res) => {
@@ -52,14 +53,33 @@ const Product = () => {
       .then((product) => setProduct(product));
   }, []);
 
-  console.log("SOY PRODUCT", product);
+  // add to shopping cart
+
+  const handleAdd = (e) => {
+    e.preventDefault();
+    if (Object.keys(usuarioStorage).length != 0) {
+      axios
+        .post("/api/cart/add", {
+          productId: productId,
+          userId: usuarioStorage.id,
+          price: product.price,
+          quantity: quantity,
+        })
+        .then(() => {
+          alert("producto agregado con exito");
+        });
+    } else {
+      alert("debes estar conectado antes de agregar productos a tu carrito");
+      navigate("/login");
+    }
+  };
 
   return (
     <>
       <div className="container">
         <div class="row">
           <div class="col-sm-6">
-            <span class = "container_img">
+            <span class="container_img">
               <img class="image" src={product.img} alt="cerveza" />
             </span>
           </div>
@@ -129,7 +149,11 @@ const Product = () => {
                       <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z" />
                     </svg>
                   </button>
-                  <button type="button" class="btn btn-default cart">
+                  <button
+                    type="button"
+                    class="btn btn-default cart"
+                    onClick={handleAdd}
+                  >
                     Agregar al carrito
                   </button>
                 </span>

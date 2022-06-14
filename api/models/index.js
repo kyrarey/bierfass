@@ -1,7 +1,7 @@
 const Address = require('./Address');
 const History = require('./History');
 const Product = require('./Product');
-const ShoppingCar = require('./ShoppingCar');
+const ShoppingCart = require('./ShoppingCart');
 const Users = require('./Users');
 const ReviewProduct = require('./ReviewProduct');
 
@@ -9,7 +9,7 @@ module.exports = {
   Address,
   History,
   Product,
-  ShoppingCar,
+  ShoppingCart,
   Users,
   ReviewProduct,
 };

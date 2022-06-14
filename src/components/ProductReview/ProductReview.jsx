@@ -4,15 +4,15 @@ import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import './ProductReview.css';
-import { useGlobalContext } from '../../context/globalUserContext';
+
 
 const ProductReview = () => {
-  const { user } = useGlobalContext();
-  console.log("user",user);
+
+
   const { productId } = useParams();
   const [review, setReview] = useState('');
 
-  console.log(review);
+ 
   useEffect(() => {
     axios
       .get(`/api/reviews/${productId}`)
