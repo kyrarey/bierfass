@@ -1,12 +1,11 @@
 @import url("https://fonts.googleapis.com/css2?family=Oi&family=Roboto:ital@1&family=Tangerine&display=swap");
 
-* {
-  font-family: "Roboto", sans-serif;
+.banner {
+  background-color: rgb(74, 91, 219);
 }
 
 .navbar {
   padding: 10px;
-  position: fixed;
   width: 100%;
 }
 

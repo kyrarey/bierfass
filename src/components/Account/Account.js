@@ -1,10 +1,11 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import { useGlobalContext } from '../../context/globalUserContext';
+import React from "react";
+import { Link } from "react-router-dom";
+import { useGlobalContext } from "../../context/globalUserContext";
 
 const Account = () => {
-  const { user } = useGlobalContext();
-  console.log('SOY USER', user);
+  const user = !!localStorage.getItem("user")
+    ? JSON.parse(localStorage.getItem("user"))
+    : {};
 
   return (
     <div>
@@ -115,13 +116,13 @@ const Account = () => {
           <br></br>
           <br></br>
           <div class="butonsAcount" align="center">
-            <Link to={'/editUser'}>
+            <Link to={"/editUser"}>
               <button class="btn btn-secondary">Editar usuarios</button>
             </Link>
-            <Link to={'/editProduct'}>
+            <Link to={"/editProduct"}>
               <button class="btn btn-warning">Editar Productos</button>
             </Link>
-            <Link to={'/loadProduct'}>
+            <Link to={"/loadProduct"}>
               <button class="btn btn-success">Cargar Productos</button>
             </Link>
           </div>

@@ -1,5 +1,6 @@
-import React from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import React from "react";
+import { Link } from "react-router-dom";
+import "./ProductCard.css";
 
 const ProductCard = ({
   id,
@@ -11,30 +12,26 @@ const ProductCard = ({
   alcoholPercentage,
   type,
 }) => {
-  let navigate = useNavigate();
-
-  const onClickInfo = (e) => {
-    e.preventDefault();
-    navigate(`/product/${id}`);
-  };
-
   return (
     <div className="container">
-      <div class="col">
-        <div class="card imgProd">
-          <img src={img} class="card-img-top" alt="..."></img>
-          <div class="card-body">
-            <h5 class="card-title">{name}</h5>
-            <p class="card-text">${price}</p>
-            <p class="card-text">{size}ml</p>
-            <p class="card-text">%{alcoholPercentage}</p>
-            <p class="card-text">{type}</p>
-            <p class="card-text">{brand}</p>
-            <button onClick={onClickInfo} class="btn btn-secondary">
-              Info
-            </button>
+      <div class="product-card-body">
+        <Link to={`/product/${id}`} class="product-card-body">
+          <div class="row">
+            <div class="col-md-6">
+              <img src={img} class="product-card-img" alt="beer"></img>
+            </div>
+            <div class="col-md-6">
+              <div class="product-card-text">
+                <h4 class="border-top border-bottom border-2">{name}</h4>
+                <p>${price}</p>
+                <p>{size}ml</p>
+                <p>%{alcoholPercentage}</p>
+                <p>{type}</p>
+                <p>{brand}</p>
+              </div>
+            </div>
           </div>
-        </div>
+        </Link>
       </div>
     </div>
   );

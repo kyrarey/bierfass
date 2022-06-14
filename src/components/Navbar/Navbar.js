@@ -1,21 +1,23 @@
-import axios from 'axios';
-import { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { useGlobalContext } from '../../context/globalUserContext';
-import React from 'react';
-import './Navbar.css';
-import SearchIcon from '@mui/icons-material/Search';
-import SportsBarIcon from '@mui/icons-material/SportsBar';
-import AccountCircleIcon from '@mui/icons-material/AccountCircle';
-import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
-import { Link } from 'react-router-dom';
+import axios from "axios";
+import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { useGlobalContext } from "../../context/globalUserContext";
+import React from "react";
+import "./Navbar.css";
+import SearchIcon from "@mui/icons-material/Search";
+import SportsBarIcon from "@mui/icons-material/SportsBar";
+import AccountCircleIcon from "@mui/icons-material/AccountCircle";
+import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
   let navigate = useNavigate();
-  const [search, setSearch] = useState('');
+  const [search, setSearch] = useState("");
   const { user, setUser, setProductSearch } = useGlobalContext();
 
-  const usuarioStorage = JSON.parse(localStorage.getItem('user'));
+  const usuarioStorage = !!localStorage.getItem("user")
+    ? JSON.parse(localStorage.getItem("user"))
+    : {};
 
   const onClickHandler = (e) => {
     console.log(user);
@@ -24,7 +26,7 @@ const Navbar = () => {
       .post(`http://localhost:8000/api/products/search`, { search })
       .then((data) => {
         setProductSearch(data.data);
-        navigate('/search');
+        navigate("/search");
       });
 
     //deslogueo, abajo esta el boton de desloguear, pueden modificarlo como gusten
@@ -43,16 +45,18 @@ const Navbar = () => {
 
   const onCLickHome = (e) => {
     e.preventDefault();
-    navigate('/');
+    navigate("/");
   };
 
   return (
     <>
       <section class="js-section-advertising section-advertising">
-        <div class="container-sm">
-          <div class="row-fluid">
-            <div class="col text-center">
-              "BEBER CON MODERACIÓN. PROHIBIDA SU VENTA A MENORES DE 18 AÑOS"
+        <div class="banner">
+          <div class="container-fluid">
+            <div class="row-fluid">
+              <div class="col text-center">
+                "BEBER CON MODERACIÓN. PROHIBIDA SU VENTA A MENORES DE 18 AÑOS"
+              </div>
             </div>
           </div>
         </div>
