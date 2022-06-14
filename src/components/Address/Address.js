@@ -2,10 +2,10 @@ import React, { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
-
 const Address = () => {
-  const usuarioStorage =  !!localStorage.getItem('user') ? JSON.parse(localStorage.getItem('user')) : {};
-  
+  const usuarioStorage = !!localStorage.getItem("user")
+    ? JSON.parse(localStorage.getItem("user"))
+    : {};
 
   const [address, setAddress] = useState("");
   const [city, setCity] = useState("");
@@ -15,10 +15,9 @@ const Address = () => {
   const [postalCode, setPostalCode] = useState("");
 
   const navigate = useNavigate();
-  
-  
+
   const handleSubmit = (e) => {
-    console.log(street, city, state, telephone, postalCode, usuarioStorage)
+    console.log(street, city, state, telephone, postalCode, usuarioStorage);
     e.preventDefault();
     axios
       .post("http://localhost:8000/api/address/add", {
@@ -28,12 +27,14 @@ const Address = () => {
         telephone: telephone,
         postalCode: postalCode,
         userId: usuarioStorage.id,
-      })  
+      })
       .then((res) => {
         setAddress(res.data);
+        navigate("/me");
       });
-    navigate("/me");
   };
+
+  //axios get para obtener la direccion del usuario
 
   return (
     <div class="container">

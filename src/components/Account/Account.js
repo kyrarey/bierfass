@@ -15,7 +15,7 @@ const Account = () => {
         address: address,
       })
       .then((res) => {
-        setAddress(res.data);
+        setAddress(res.data[0]);
       });
   }, []);
 
