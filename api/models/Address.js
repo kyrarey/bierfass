@@ -32,3 +32,4 @@ Address.init({
 User.hasMany(Address)
 
 module.exports = Address
+

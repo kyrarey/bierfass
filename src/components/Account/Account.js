@@ -7,7 +7,9 @@ const Account = () => {
     ? JSON.parse(localStorage.getItem("user"))
     : {};
 
-  const [address, setAddress] = useState({});
+  const [address, setAddress] = useState([]);
+  const [selected, setSelected] = useState();
+
 
   useEffect(() => {
     axios
@@ -15,9 +17,23 @@ const Account = () => {
         address: address,
       })
       .then((res) => {
-        setAddress(res.data[0]);
+        setAddress(res.data);
       });
-  }, []);
+  }, [selected]);
+
+  const deleteAddress = (e) => {
+    e.preventDefault();
+    setSelected(e.target.value);
+    let value = e.target.value;
+    axios
+      .delete(`http://localhost:8000/api/address/${value}`)
+      .then(() => {
+        alert("eliminada con exito");
+      })
+      .catch(() => {
+        alert("no se pudo eliminar");
+      });
+  };
 
   return (
     <div>
@@ -103,21 +119,40 @@ const Account = () => {
                 aria-labelledby="flush-headingThree"
                 data-bs-parent="#accordionFlushExample"
               >
-                <div class="accordion-body">
-                  Calle: {address.street}
-                  <br></br>
-                  Teléfono:{address.telephone}
-                  <br></br>
-                  Ciudad: {address.city}
-                  <br></br>
-                  Provincia: {address.state}
-                  <br></br>
-                  C.P.:{address.postalCode}
-                  <br></br>
-                  <p class="mt-2">
-                    <a href="/address">Cargá tus direcciones</a>
-                  </p>
-                </div>
+                {address.length === 0 ? (
+                  <>
+                    <p>No tienes direcciones registradas aún</p>
+                    <p class="mt-2">
+                      <a href="/address">Cargá tus direcciones</a>
+                    </p>
+                  </>
+                ) : (
+                  address.map((oneAddress) => (
+                    <div class="accordion-body">
+                      Calle: {oneAddress.street}
+                      <br></br>
+                      Teléfono:{oneAddress.telephone}
+                      <br></br>
+                      Ciudad: {oneAddress.city}
+                      <br></br>
+                      Provincia: {oneAddress.state}
+                      <br></br>
+                      C.P.:{oneAddress.postalCode}
+                      <br></br>
+                      <p class="mt-2">
+                        <a href="/address">Cargá tus direcciones</a>
+                      </p>
+                      <button
+                        value={oneAddress.id}
+                        type="button"
+                        class="btn btn-danger"
+                        onClick={deleteAddress}
+                      >
+                        Eliminá tu dirección
+                      </button>
+                    </div>
+                  ))
+                )}
               </div>
             </div>
           </div>
