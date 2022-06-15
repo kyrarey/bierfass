@@ -1,17 +1,17 @@
-import React, { useState, useEffect } from "react";
-import "./Product.css";
-import ProductReview from "../ProductReview/ProductReview";
-import alcohol from "../../assets/iconAlcohol.png";
-import location from "../../assets/location.png";
-import axios from "axios";
-import { useParams } from "react-router-dom";
-import { useNavigate } from "react-router-dom";
+import React, { useState, useEffect } from 'react';
+import './Product.css';
+import ProductReview from '../ProductReview/ProductReview';
+import alcohol from '../../assets/iconAlcohol.png';
+import location from '../../assets/location.png';
+import axios from 'axios';
+import { useParams } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 const Product = () => {
   const [product, setProduct] = useState([]);
   const [quantity, setQuantity] = useState(1);
-  const usuarioStorage = !!localStorage.getItem("user")
-    ? JSON.parse(localStorage.getItem("user"))
+  const usuarioStorage = !!localStorage.getItem('user')
+    ? JSON.parse(localStorage.getItem('user'))
     : {};
   const { productId } = useParams();
   const [reviews, setReviews] = useState([]);
@@ -29,7 +29,11 @@ const Product = () => {
     sum += object.rating;
   });
 
-  const starRating = sum / reviews.length;
+  let starRating = '';
+  for (let i = 0; i < sum / reviews.length; i++) {
+    starRating += '⭐';
+  }
+  console.log(starRating);
 
   const handleDecrease = () => {
     if (quantity > 1) {
@@ -47,7 +51,7 @@ const Product = () => {
     axios
       .get(`http://localhost:8000/api/products/${productId}`)
       .then((res) => {
-        console.log("SOY DATA", res.data[0]);
+        console.log('SOY DATA', res.data[0]);
         return res.data[0];
       })
       .then((product) => setProduct(product));
@@ -59,18 +63,18 @@ const Product = () => {
     e.preventDefault();
     if (Object.keys(usuarioStorage).length != 0) {
       axios
-        .post("/api/cart/add", {
+        .post('/api/cart/add', {
           productId: productId,
           userId: usuarioStorage.id,
           price: product.price,
           quantity: quantity,
         })
         .then(() => {
-          alert("producto agregado con exito");
+          alert('producto agregado con exito');
         });
     } else {
-      alert("debes estar conectado antes de agregar productos a tu carrito");
-      navigate("/login");
+      alert('debes estar conectado antes de agregar productos a tu carrito');
+      navigate('/login');
     }
   };
 
@@ -109,8 +113,7 @@ const Product = () => {
                   <b>Disponibilidad: </b> 150 unidades
                 </p>
                 <p>
-                  <b>Puntuación: </b> {starRating} estrellas
-                  <i className="bi bi-star"></i>
+                  <b>Puntuación: </b> {starRating}
                 </p>
                 <span class="quantity">
                   <span>

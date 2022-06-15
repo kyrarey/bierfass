@@ -5,14 +5,10 @@ import { useParams } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import './ProductReview.css';
 
-
 const ProductReview = () => {
-
-
   const { productId } = useParams();
   const [review, setReview] = useState('');
 
- 
   useEffect(() => {
     axios
       .get(`/api/reviews/${productId}`)
@@ -51,7 +47,7 @@ const ProductReview = () => {
                       </p>
                     </div>
                     <div>
-                      <i className="bi bi-star">{Onereview.rating}</i>
+                      <i>{'⭐'.repeat(Onereview.rating)}</i>
                     </div>
                   </div>
                   <div className="col-8" id="textReview">
