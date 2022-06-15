@@ -4,6 +4,7 @@ const Product = require('./Product');
 const ShoppingCart = require('./ShoppingCart');
 const Users = require('./Users');
 const ReviewProduct = require('./ReviewProduct');
+const OrderDetail = require("./OrderDetail")
 
 module.exports = {
   Address,
@@ -12,4 +13,5 @@ module.exports = {
   ShoppingCart,
   Users,
   ReviewProduct,
+  OrderDetail,
 };

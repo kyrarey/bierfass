@@ -24,6 +24,7 @@ import NewReview from "./components/NewReview/NewReview.jsx";
 import SendEditProduct from "./components/Account/Admin/SendEditProduct";
 import Address from "./components/Address/Address";
 import SendOrder from "./components/SendOrder/SendOrder";
+import Confirmation from "./components/Confirmation/Confirmation";
 
 function App() {
   return (
@@ -50,6 +51,7 @@ function App() {
             <Route path="/loadProduct" element={<LoadProduct />} />
             <Route path="/address" element={<Address />} />
             <Route path="/sendOrder" element={<SendOrder />} />
+            <Route path="/confirmation" element={<Confirmation />} />
           </Routes>
           <Footer />
         </>
