@@ -14,6 +14,7 @@ const Product = () => {
     ? JSON.parse(localStorage.getItem('user'))
     : {};
   const { productId } = useParams();
+
   const [reviews, setReviews] = useState([]);
   const navigate = useNavigate();
   let sum = 0;

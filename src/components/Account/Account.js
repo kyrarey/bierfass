@@ -81,46 +81,26 @@ const Account = () => {
                 data-bs-parent="#accordionFlushExample"
               >
                 {address ? (
-                <div class="accordion-body">
-                  Calle: {address.street}
-                  <br></br>
-                  Teléfono:{address.telephone}
-                  <br></br>
-                  Ciudad: {address.city}
-                  <br></br>
-                  Provincia: {address.state}
-                  <br></br>
-                  C.P.:{address.postalCode}
-                  <br></br>
-                  <p class="mt-2">
-                    <a href="/address">Cargá tus direcciones</a>
-                  </p>
-                </div>) : (<p>No tienes direcciones registradas aún</p>)}
-              </div>
-            </div>
-
-            <div class="accordion-item">
-              <h2 class="accordion-header" id="flush-headingOne">
-                <button
-                  class="accordion-button collapsed"
-                  type="button"
-                  data-bs-toggle="collapse"
-                  data-bs-target="#flush-collapseOne"
-                  aria-expanded="false"
-                  aria-controls="flush-collapseOne"
-                >
-                  Historial de ordenes
-                </button>
-              </h2>
-              <div
-                id="flush-collapseOne"
-                class="accordion-collapse collapse"
-                aria-labelledby="flush-headingOne"
-                data-bs-parent="#accordionFlushExample"
-              >
-                <div class="accordion-body">
-                  Acá vamos a mostrar las ordenes realizadas
-                </div>
+                  <div class="accordion-body">
+                    Calle: {address.street}
+                    <br></br>
+                    Teléfono:{address.telephone}
+                    <br></br>
+                    Ciudad: {address.city}
+                    <br></br>
+                    Provincia: {address.state}
+                    <br></br>
+                    C.P.:{address.postalCode}
+                    <br></br>
+                  </div>
+                ) : (
+                  <>
+                    <p>No tienes direcciones registradas aún</p>
+                    <p class="mt-2">
+                      <a href="/address">Cargá tus direcciones</a>
+                    </p>
+                  </>
+                )}
               </div>
             </div>
           </div>
