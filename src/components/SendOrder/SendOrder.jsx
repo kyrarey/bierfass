@@ -1,9 +1,12 @@
 import React from "react";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import "./SendOrder.css";
 
 const SendOrder = () => {
   const [address, setAddress] = useState([]);
+  const [email, setEmail] = useState("");
+  
   const user = !!localStorage.getItem("user")
     ? JSON.parse(localStorage.getItem("user"))
     : {};
@@ -13,15 +16,28 @@ const SendOrder = () => {
     .then((res) => {setAddress(res.data)});
   }, []);
 
+//on submit send email with nodemailer
+  const handleClick = (e) => {
+    axios.post('http://localhost:8000/api/mail/sendOrder', {
+      email: email,
+    }).then(() => {
+    alert("email de confirmación enviado")
+    }).catch(() => {
+      alert("error al enviar email")
+    }
+    )
+ }
+
   return (
     <div className="container">
-      <h2>Envia tu orden</h2>
+      <div class="send-order">
+      <h2 class="p-3 fs-2 border-top border-bottom border-2" >Envia tu orden</h2>
       <div class="row">
-        <div class="col">
+        <div class="col-3">
           <p>Selecciona tu direccion de entrega</p>
           <p>direcciones de los usuarios...</p>
         </div>
-        <div class="col">
+        <div class="col-5">
           <div class="form-group">
             <label for="exampleFormControlInput1">
               A donde quieres que te llegue tu email de confirmacion
@@ -31,11 +47,12 @@ const SendOrder = () => {
               class="form-control"
               id="exampleFormControlInput1"
               placeholder="name@example.com"
+              onChange = {(e) => setEmail(e.target.value)}
             ></input>
           </div>
         </div>
-        <div class="col">
-          <p> Escoje tu metodo de pago</p>
+        <div class="col-4">
+          <p> Escoge tu metodo de pago</p>
           <form>
             <div>
               <div class="d-flex flex-row pb-3">
@@ -52,10 +69,10 @@ const SendOrder = () => {
                 </div>
                 <div class="rounded border d-flex w-100 p-3 align-items-center">
                   <p class="mb-0">
-                    <i class="fab fa-cc-visa fa-lg text-primary pe-2"></i>Visa
-                    Debit Card
+                      <i class="fab fa-cc-visa fa-lg text-primary pe-2" />
+                      Visa Debit Card
                   </p>
-                  <div class="ms-auto">************3456</div>
+                  <div class="ms-auto">************3456 </div>
                 </div>
               </div>
 
@@ -107,10 +124,11 @@ const SendOrder = () => {
       </div>
 
       <div class="row">
-        <button type="button" class="btn btn-default cart">
+        <button type="button" class="btn btn-default cart" onClick={handleClick} >
           Envia tu orden
         </button>
-      </div>
+        </div>
+        </div>
     </div>
   );
 };

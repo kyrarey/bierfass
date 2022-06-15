@@ -1,0 +1,23 @@
+.cart-container {
+  margin: 70px;
+  background-color: oldlace;
+}
+
+.cart-container p {
+  font-size: 17px;
+  color: #000000;
+  margin: 30px;
+}
+
+.cart-item {
+  margin: 30px;
+  padding: 20px;
+  box-shadow: 1px 1px 1px 1px #d6d1d1;
+}
+
+.cart-total {
+  align-items: center;
+  font-size: 20px;
+  margin: 20px;
+  padding: 10px;
+}

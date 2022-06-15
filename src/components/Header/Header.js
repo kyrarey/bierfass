@@ -1,6 +1,6 @@
-import React from 'react';
-import './Header.css';
-import SportsBarIcon from '@mui/icons-material/SportsBar';
+import React from "react";
+import "./Header.css";
+import SportsBarIcon from "@mui/icons-material/SportsBar";
 
 const Header = () => {
   return (
@@ -8,8 +8,8 @@ const Header = () => {
       <div class="welcome">
         <div class="container">
           <SportsBarIcon style={{ fontSize: 60 }} />
-          <h1 class="display-4">Bierfass</h1>
-          <p class="lead">
+          <h1>Bierfass</h1>
+          <p>
             Bierfass es una distribuidora de cervezas, donde podes encontrar
             cervezas de todo tipo.
           </p>

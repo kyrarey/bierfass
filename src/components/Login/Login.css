@@ -1,34 +1,33 @@
 .login {
-    justify-content: space-around;
-    position: center;
-  }
+  justify-content: space-around;
+  position: center;
+}
 
-  .form{
-    display: flex;
-    flex-direction: column;
-    margin: 0 auto;
-    width: 400px;
-    padding: 5px;
-    position: center;
+.form {
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  width: 400px;
+  padding: 5px;
+  position: center;
+}
 
-  }
+.form-control {
+  display: flex;
+  width: 400px;
+  padding: 7px;
+  border-radius: 10px;
+  margin: 7px 0;
+  position: "center";
+}
 
-  .form-control{
-    display: flex;
-    width: 400px;
-    padding: 7px;
-    border-radius: 10px;
-    margin: 7px 0;
-    position: "center";
-  }
-  
-  .title-login{
-    text-align: center;
-    font-size: 25px;
-    font-weight: bold;
-    padding-bottom: 8px;
-  }
-  
-  .mt-2{
-   padding: 15px;
-  }
+.title-login {
+  text-align: center;
+  font-size: 25px;
+  font-weight: bold;
+  padding-bottom: 8px;
+}
+
+.mt-2 {
+  padding: 15px;
+}

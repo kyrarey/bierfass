@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
+import "./Account.css";
 
 const Account = () => {
   const usuarioStorage = !!localStorage.getItem("user")
@@ -20,7 +21,7 @@ const Account = () => {
   }, []);
 
   return (
-    <div>
+    <div class="account">
       {!usuarioStorage.admin ? (
         <div class="container">
           <p class="sign-out text-center">
@@ -31,30 +32,6 @@ const Account = () => {
             </a>
           </p>
           <div class="accordion accordion-flush" id="accordionFlushExample">
-            <div class="accordion-item">
-              <h2 class="accordion-header" id="flush-headingOne">
-                <button
-                  class="accordion-button collapsed"
-                  type="button"
-                  data-bs-toggle="collapse"
-                  data-bs-target="#flush-collapseOne"
-                  aria-expanded="false"
-                  aria-controls="flush-collapseOne"
-                >
-                  Historial de ordenes
-                </button>
-              </h2>
-              <div
-                id="flush-collapseOne"
-                class="accordion-collapse collapse"
-                aria-labelledby="flush-headingOne"
-                data-bs-parent="#accordionFlushExample"
-              >
-                <div class="accordion-body">
-                  Acá vamos a mostrar las ordenes realizadas
-                </div>
-              </div>
-            </div>
             <div class="accordion-item">
               <h2 class="accordion-header" id="flush-headingTwo">
                 <button
@@ -79,7 +56,7 @@ const Account = () => {
                   <br></br>
                   Apellido: {usuarioStorage.lastName}
                   <br></br>
-                  email: {usuarioStorage.email}
+                  mail: {usuarioStorage.email}
                   <br></br>
                 </div>
               </div>
@@ -117,6 +94,31 @@ const Account = () => {
                   <p class="mt-2">
                     <a href="/address">Cargá tus direcciones</a>
                   </p>
+                </div>
+              </div>
+            </div>
+
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="flush-headingOne">
+                <button
+                  class="accordion-button collapsed"
+                  type="button"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#flush-collapseOne"
+                  aria-expanded="false"
+                  aria-controls="flush-collapseOne"
+                >
+                  Historial de ordenes
+                </button>
+              </h2>
+              <div
+                id="flush-collapseOne"
+                class="accordion-collapse collapse"
+                aria-labelledby="flush-headingOne"
+                data-bs-parent="#accordionFlushExample"
+              >
+                <div class="accordion-body">
+                  Acá vamos a mostrar las ordenes realizadas
                 </div>
               </div>
             </div>

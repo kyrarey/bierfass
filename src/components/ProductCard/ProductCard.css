@@ -3,7 +3,7 @@
 .product-card-body {
   padding: 40px;
   margin: 60px;
-  background-color: rgb(34, 33, 33);
+  background-color: rgb(33, 29, 29);
   text-decoration: none;
   color: white;
 }
@@ -29,15 +29,4 @@
   padding: 10x;
   font-size: 1.3rem;
   color: rgb(255, 255, 255);
-}
-
-.product-card-text button {
-  background-color: rgb(255, 255, 255);
-  text-align: center;
-  padding: 10px;
-  font-family: "Roboto", sans-serif;
-  font-size: 1.3rem;
-  color: rgb(34, 33, 33);
-  border-radius: 5px;
-  cursor: pointer;
 }

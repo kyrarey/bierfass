@@ -1,0 +1,15 @@
+.send-order {
+  margin: 70px;
+  background-color: oldlace;
+}
+
+.send-order h2 {
+  text-align: center;
+  font-size: 30px;
+  color: #000000;
+  margin: 30px;
+}
+
+.send-order .col {
+  margin: 30px;
+}
