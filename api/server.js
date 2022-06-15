@@ -7,6 +7,8 @@ const routes = require("./routes/index");
 
 //
 const User = require("./models/Users");
+const OrderDetail = require("./models/OrderDetail")
+
 
 //
 const cors = require("cors");

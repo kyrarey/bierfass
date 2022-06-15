@@ -80,6 +80,7 @@ const Account = () => {
                 aria-labelledby="flush-headingThree"
                 data-bs-parent="#accordionFlushExample"
               >
+                {address ? (
                 <div class="accordion-body">
                   Calle: {address.street}
                   <br></br>
@@ -94,7 +95,7 @@ const Account = () => {
                   <p class="mt-2">
                     <a href="/address">Cargá tus direcciones</a>
                   </p>
-                </div>
+                </div>) : (<p>No tienes direcciones registradas aún</p>)}
               </div>
             </div>
 
