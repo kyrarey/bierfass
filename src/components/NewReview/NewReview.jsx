@@ -1,34 +1,29 @@
-import React from "react";
-import axios from "axios";
-import Navbar from "../Navbar/Navbar";
-import "./newReview.css";
-import { useParams } from "react-router";
-import { useState } from "react";
+import React from 'react';
+import axios from 'axios';
+import Navbar from '../Navbar/Navbar';
+import './newReview.css';
+import { useParams } from 'react-router';
+import { useState } from 'react';
 import { useGlobalContext } from '../../context/globalUserContext';
 
-
 const NewReview = () => {
-  
-  const {productId } = useParams();
-  const [comment, setComment] = useState("");
-  const [rating, setRating] = useState("");
+  const { productId } = useParams();
+  const [comment, setComment] = useState('');
+  const [rating, setRating] = useState(0);
   const { user } = useGlobalContext();
-
- 
 
   const handleChange = (e) => {
     const { value } = e.target;
-      setComment(value);    
+    setComment(value);
   };
 
-  const handleClickStar=(e)=>{
-    const value = e.target.getAttribute("value");
-    setRating(value)
-  }
-
+  const handleClickStar = (e) => {
+    const value = e.target.getAttribute('value');
+    setRating(value);
+    console.log(value);
+  };
 
   const handleSubmit = (e) => {
-  
     e.preventDefault();
     axios
       .post(`/api/reviews/${productId}`, {
@@ -38,10 +33,10 @@ const NewReview = () => {
         productId: productId,
       })
       .then(() => {
-        alert("creaste exitosamente tu comentario");
+        alert('creaste exitosamente tu comentario');
       })
       .catch(() => {
-        alert("Ya dejaste tu comentario sobre este producto");
+        alert('Ya dejaste tu comentario sobre este producto');
       });
   };
 
@@ -53,38 +48,42 @@ const NewReview = () => {
       <div className="col" id="stars">
         <form onSubmit={handleSubmit}>
           <div className="col">
-                   
-            <div className="star-rating"   >
-            <label  onClick={handleClickStar}> califica tu producto:
-             
-
-            <input type="radio" id="1-star" name="estrellas" value="1"  />
-              <label htmlFor="radio4" className="star" >
-              <i class="bi bi-star" name="star1 "value="1" ></i>
-              </label>
-
-            <input type="radio" id="2-stars" name="rating" value="2" />
-              <label htmlFor="radio4" className="star">
-              <i class="bi bi-star"  name="star2" value="2"></i>
-              </label>
-
-            <input type="radio" id="3-stars" name="rating" value="3" />
-              <label htmlFor="radio3" className="star">
-              <i class="bi bi-star"  name="star3" value="3" ></i>
-              </label>
-
-            <input type="radio" id="4-stars" name="rating" value="4" />
-              <label htmlFor="radio2" className="star">
-              <i class="bi bi-star"  name="star4" value="4"></i>
-              </label>
-
-              <input type="radio" id="5-stars" value="5" />
-              <label htmlFor="radio1" className="star">
-              <i class="bi bi-star" name="star5" value="5"></i>
-              </label>
+            <div className="star-rating">
+              <label onClick={handleClickStar}>
+                {' '}
+                califica tu producto:
+                <input type="radio" id="1-star" name="estrellas" value="1" />
+                <label htmlFor="radio4" className="star">
+                  <i className="starRaiting" value={1}>
+                    {rating < 1 ? '☆' : '★'}
+                  </i>
+                </label>
+                <input type="radio" id="2-stars" name="rating" value="2" />
+                <label htmlFor="radio4" className="star">
+                  <i className="starRaiting" value={2}>
+                    {rating < 2 ? '☆' : '★'}
+                  </i>
+                </label>
+                <input type="radio" id="3-stars" name="rating" value="3" />
+                <label htmlFor="radio3" className="star">
+                  <i className="starRaiting" value={3}>
+                    {rating < 3 ? '☆' : '★'}
+                  </i>
+                </label>
+                <input type="radio" id="4-stars" name="rating" value="4" />
+                <label htmlFor="radio2" className="star">
+                  <i className="starRaiting" value={4}>
+                    {rating < 4 ? '☆' : '★'}
+                  </i>
+                </label>
+                <input type="radio" id="5-stars" value="5" />
+                <label htmlFor="radio1" className="star">
+                  <i className="starRaiting" value={5}>
+                    {rating > 4 ? '★' : '☆'}
+                  </i>
+                </label>
               </label>
             </div>
-
           </div>
           <div className="col-12" id="commentContainer" value={comment}>
             <input
