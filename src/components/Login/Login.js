@@ -4,7 +4,6 @@ import "./Login.css";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import ReCAPTCHA from "react-google-recaptcha";
-import LoginGoogle from "./LoginGoogle";
 
 const Login = () => {
   const { user, setUser } = useGlobalContext();
@@ -23,9 +22,9 @@ const Login = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // if (captcha.current.getValue()) {
-    //   setCaptchaValue(true);
-    // }
+    if (captcha.current.getValue()) {
+      setCaptchaValue(true);
+    }
     axios
       .post("http://localhost:8000/api/users/login", {
         email: email,
@@ -96,8 +95,8 @@ const Login = () => {
               ¿No tenés cuenta?&nbsp;
               <a href="/register">Crear cuenta</a>
             </p>
+            
           </form>
-          <LoginGoogle />
         </div>
       </div>
     </div>
