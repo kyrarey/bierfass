@@ -103,21 +103,27 @@ const Account = () => {
                 aria-labelledby="flush-headingThree"
                 data-bs-parent="#accordionFlushExample"
               >
-                <div class="accordion-body">
-                  Calle: {address.street}
-                  <br></br>
-                  Teléfono:{address.telephone}
-                  <br></br>
-                  Ciudad: {address.city}
-                  <br></br>
-                  Provincia: {address.state}
-                  <br></br>
-                  C.P.:{address.postalCode}
-                  <br></br>
-                  <p class="mt-2">
-                    <a href="/address">Cargá tus direcciones</a>
-                  </p>
-                </div>
+                {address ? (
+                  <div class="accordion-body">
+                    Calle: {address.street}
+                    <br></br>
+                    Teléfono:{address.telephone}
+                    <br></br>
+                    Ciudad: {address.city}
+                    <br></br>
+                    Provincia: {address.state}
+                    <br></br>
+                    C.P.:{address.postalCode}
+                    <br></br>
+                  </div>
+                ) : (
+                  <>
+                    <p>No tienes direcciones registradas aún</p>
+                    <p class="mt-2">
+                      <a href="/address">Cargá tus direcciones</a>
+                    </p>
+                  </>
+                )}
               </div>
             </div>
           </div>

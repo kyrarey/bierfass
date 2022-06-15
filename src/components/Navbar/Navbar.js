@@ -9,6 +9,7 @@ import SportsBarIcon from "@mui/icons-material/SportsBar";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import { Link } from "react-router-dom";
+import ProductType from "../ProductType/ProductType";
 
 const Navbar = () => {
   let navigate = useNavigate();
@@ -76,30 +77,7 @@ const Navbar = () => {
             <span className="navbar-toggler-icon"></span>
           </button>
           <div className="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-              <li className="nav-item dropdown">
-                <a className="nav-link dropdown-toggle" handlelogout>
-                  Cervezas
-                </a>
-                <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
-                  <li>
-                    <a className="dropdown-item" href="#">
-                      Rubia
-                    </a>
-                  </li>
-                  <li>
-                    <a className="dropdown-item" href="#">
-                      Negra
-                    </a>
-                  </li>
-                  <li>
-                    <a className="dropdown-item" href="#">
-                      Roja
-                    </a>
-                  </li>
-                </ul>
-              </li>
-            </ul>
+            <ProductType />
             <div className="navbar-nav mv-auto mb-2 mb-lg-0">
               <form className="d-flex">
                 <input

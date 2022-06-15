@@ -47,6 +47,13 @@ router.post("/search", (req, res) => {
   }).then((users) => res.send(users));
 });
 
+//One particular product by type
+router.get("/:type", (req, res) => {
+  Product.findAll({
+    where: { type: req.params.type },
+  }).then((products) => res.send(products));
+});
+
 //Add product as admin
 router.post("/add", (req, res) => {
   Product.create({

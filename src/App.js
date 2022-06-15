@@ -24,6 +24,7 @@ import NewReview from "./components/NewReview/NewReview.jsx";
 import SendEditProduct from "./components/Account/Admin/SendEditProduct";
 import Address from "./components/Address/Address";
 import SendOrder from "./components/SendOrder/SendOrder";
+import TypeSearch from "./components/Search/TypeSearch";
 
 function App() {
   return (
@@ -39,6 +40,7 @@ function App() {
             <Route path="/logout" element={<Logout />} />
             <Route path="/me" element={<Account />} />
             <Route path="/search" element={<Search />} />
+            <Route path="/product/:type" element={<TypeSearch/>} />
             <Route path="/cart/:userId" element={<Cart />} />
             <Route path="/product/:productId" element={<Product />} />
             <Route path="/users" element={<Users />} />
