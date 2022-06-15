@@ -282,7 +282,7 @@ const SendOrder = () => {
         </div>
         <div class="row">
           <button
-            type="button"
+            type="button">>>>>>> origin/VistaCheckout>>>>>>> origin/VistaCheckout
             class="btn btn-default cart"
             onClick={handleSubmit}
           >
