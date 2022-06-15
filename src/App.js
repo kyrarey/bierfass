@@ -1,11 +1,9 @@
 import React from "react";
 import "./App.css";
 import Navbar from "./components/Navbar/Navbar";
-import Header from "./components/Header/Header";
 import Account from "./components/Account/Account";
 import Cart from "./components/Cart/Cart";
 import Home from "./components/Home/Home";
-import Logout from "./components/Logout/Logout";
 import Reviews from "./components/Reviews/Reviews";
 import Search from "./components/Search/Search";
 import Users from "./components/Users/Users";
@@ -38,10 +36,9 @@ function App() {
             <Route path="/newReview/:productId" element={<NewReview />} />
             <Route path="/register" element={<Register />} />
             <Route path="/login" element={<Login />} />
-            <Route path="/logout" element={<Logout />} />
             <Route path="/me" element={<Account />} />
             <Route path="/search" element={<Search />} />
-            <Route path="/product/:type" element={<TypeSearch />} />
+            {/* <Route path="/product/:type" element={<TypeSearch />} /> */}
             <Route path="/cart/:userId" element={<Cart />} />
             <Route path="/product/:productId" element={<Product />} />
             <Route path="/users" element={<Users />} />
