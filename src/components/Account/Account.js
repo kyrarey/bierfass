@@ -19,7 +19,7 @@ const Account = () => {
       .then((res) => {
         setAddress(res.data);
       });
-  }, [selected]);
+  }, [address]);
 
   const deleteAddress = (e) => {
     e.preventDefault();
@@ -97,9 +97,6 @@ const Account = () => {
               {address.length === 0 ? (
                 <>
                   <p>No tienes direcciones registradas aún</p>
-                  <p class="mt-2">
-                    <a href="/address">Cargá tus direcciones</a>
-                  </p>
                 </>
               ) : (
                 address.map((oneAddress) => (
@@ -114,9 +111,6 @@ const Account = () => {
                     <br></br>
                     C.P.:{oneAddress.postalCode}
                     <br></br>
-                    <p class="mt-2">
-                      <a href="/address">Cargá tus direcciones</a>
-                    </p>
                     <button
                       value={oneAddress.id}
                       type="button"
@@ -128,6 +122,9 @@ const Account = () => {
                   </div>
                 ))
               )}
+              <p class="mt-2">
+                <a href="/address">Cargá tus direcciones</a>
+              </p>
             </div>
           </div>
         </div>

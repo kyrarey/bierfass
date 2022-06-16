@@ -165,29 +165,20 @@ const Navbar = () => {
                           </button>
                         </Link>
                         <button
-                          className="btn btn-outline-light"
+                          className="btn btn-outline-danger"
                           onClick={handlelogout}
                         >
-                          logout
+                          Logout
                         </button>
                         {usuarioStorage.admin === true ? (
                           <Link to={`/admin`}>
-                            <button>
+                            <button className="btn btn-outline-warning">
                               Admin <AdminPanelSettingsIcon />
                             </button>
                           </Link>
                         ) : (
                           ''
                         )}
-
-                        <Link to="/me">
-                          <button
-                            className="btn btn-outline-light"
-                            type="submit"
-                          >
-                            {usuarioStorage.firstName} <AccountCircleIcon />
-                          </button>
-                        </Link>
                       </div>
                     )}
                   </div>

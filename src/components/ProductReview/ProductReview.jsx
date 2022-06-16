@@ -20,11 +20,11 @@ const ProductReview = () => {
     <div>
       <ul>
         <div className="subtitle">
-          <h3>REVIEWS</h3>
+          <h3 align="center">REVIEWS</h3>
         </div>
 
         {review.length === 0 ? (
-          <div>
+          <div align="center">
             <p>No hay comentarios aun</p>
           </div>
         ) : (
@@ -59,7 +59,7 @@ const ProductReview = () => {
           ))
         )}
       </ul>
-      <div>
+      <div className="pb-5" align="center">
         <Link to={`/newReview/${productId}`}>
           <button type="button" class="btn btn-default cart">
             agregar review

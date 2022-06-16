@@ -1,19 +1,18 @@
-import React from "react";
-import { useEffect, useState } from "react";
-import axios from "axios";
-import "./SendOrder.css";
-import { useNavigate } from "react-router-dom";
+import React from 'react';
+import { useEffect, useState } from 'react';
+import axios from 'axios';
+import './SendOrder.css';
+import { useNavigate } from 'react-router-dom';
 
 const SendOrder = () => {
   const [product, setProduct] = useState([]);
   const [address, setAddress] = useState([]);
-  const [email, setEmail] = useState("");
-  const [changeQuantity, setQuantity] = useState("");
+  const [email, setEmail] = useState('');
+  const [changeQuantity, setQuantity] = useState('');
   const [idProduct, setIdProduct] = useState(0);
 
-
-  const user = !!localStorage.getItem("user")
-    ? JSON.parse(localStorage.getItem("user"))
+  const user = !!localStorage.getItem('user')
+    ? JSON.parse(localStorage.getItem('user'))
     : {};
 
   //trae todas las direcciones del usuario
@@ -46,10 +45,10 @@ const SendOrder = () => {
     axios
       .delete(`/api/cart/delete`, { data: { shoppingCartId: id } })
       .then(() => {
-        alert("eliminado con exito");
+        alert('eliminado con exito');
       })
       .catch(() => {
-        alert("no se pudo eliminar");
+        alert('no se pudo eliminar');
       });
   };
 
@@ -62,10 +61,10 @@ const SendOrder = () => {
         quantity: changeQuantity,
       })
       .then(() => {
-        alert("cantidad modificada!");
+        alert('cantidad modificada!');
       })
       .catch(() => {
-        alert("no pudimos modificar la cantidad, prueba de nuevo");
+        alert('no pudimos modificar la cantidad, prueba de nuevo');
       });
 
     e.target.reset();
@@ -73,25 +72,23 @@ const SendOrder = () => {
 
   // envia la orden de compra
 
-  const [selectedAdress, setSelectedAdress] = useState("");
-  const [selectedPayMethod, setSelectedPayMethod] = useState("");
+  const [selectedAdress, setSelectedAdress] = useState('');
+  const [selectedPayMethod, setSelectedPayMethod] = useState('');
   const navigate = useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
     axios
-      .post("http://localhost:8000/api/mail/sendOrder", {
+      .post('http://localhost:8000/api/mail/sendOrder', {
         email: email,
       })
       .then(() => {
-        alert("email de confirmación enviado");
+        alert('email de confirmación enviado');
       })
       .catch(() => {
-        alert("error al enviar email");
+        alert('error al enviar email');
       });
-
-
 
     axios
       .post(`http://localhost:8000/api/shoppingHistory/newOrder`, {
@@ -100,14 +97,14 @@ const SendOrder = () => {
         payMethod: selectedPayMethod,
         userId: user.id,
         finalPrice: finalPrice,
-        detail: product
+        detail: product,
       })
       .then(() => {
-        alert("tu orden ha sido enviada exitosamente");
-        navigate("/confirmation");
+        alert('tu orden ha sido enviada exitosamente');
+        navigate('/confirmation');
       })
       .catch(() => {
-        alert("No pudimos enviar tu orden, intentalo mas tarde, por favor");
+        alert('No pudimos enviar tu orden, intentalo mas tarde, por favor');
       });
   };
 

@@ -2,15 +2,18 @@ import React from 'react';
 import axios from 'axios';
 import Navbar from '../Navbar/Navbar';
 import './newReview.css';
-import { useParams } from 'react-router';
+import { useParams, useNavigate } from 'react-router';
 import { useState } from 'react';
-import { useGlobalContext } from '../../context/globalUserContext';
 
 const NewReview = () => {
   const { productId } = useParams();
   const [comment, setComment] = useState('');
   const [rating, setRating] = useState(0);
-  const { user } = useGlobalContext();
+  const navigate = useNavigate();
+
+  const user = !!localStorage.getItem('user')
+    ? JSON.parse(localStorage.getItem('user'))
+    : {};
 
   const handleChange = (e) => {
     const { value } = e.target;
@@ -34,6 +37,7 @@ const NewReview = () => {
       })
       .then(() => {
         alert('creaste exitosamente tu comentario');
+        navigate(`/product/${productId}`);
       })
       .catch(() => {
         alert('Ya dejaste tu comentario sobre este producto');

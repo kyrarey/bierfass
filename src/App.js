@@ -6,7 +6,6 @@ import Cart from './components/Cart/Cart';
 import Home from './components/Home/Home';
 import Reviews from './components/Reviews/Reviews';
 import Search from './components/Search/Search';
-import Users from './components/Users/Users';
 import Footer from './components/Footer/Footer';
 import Register from './components/Register/Register';
 import Login from './components/Login/Login';

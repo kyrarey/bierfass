@@ -110,7 +110,6 @@ const Register = () => {
                 placeholder="urlImg"
                 value={profilePhoto}
                 onChange={(e) => setProfilePhoto(e.target.value)}
-                required
               />
             </div>
 
