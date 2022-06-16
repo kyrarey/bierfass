@@ -30,3 +30,20 @@
 .user-nav button {
   margin: 7px;
 }
+
+.dropdown-menu {
+  background-color: #212529;
+}
+
+.dropdown-item {
+  color: white;
+  opacity: 50%;
+}
+
+.btn-dark {
+  background-color: #212529;
+}
+
+.btn-dark:hover {
+  color: #212529;
+}

@@ -1,9 +1,9 @@
-.dropdown-menu {
-    background-color: #212529; /*MENU*/
-  }
-  
-  .dropdown-item { /*CADA ITEM DE LA LISTA*/
-    color: white;
-    opacity: 50%;
-  }
-  
+@import url("https://fonts.googleapis.com/css2?family=Oi&family=Roboto:ital@1&family=Tangerine&display=swap");
+
+.type {
+  text-align: center;
+  padding-top: 25px;
+  font-family: "Roboto", sans-serif;
+  font-weight: bold;
+  color: #555;
+}

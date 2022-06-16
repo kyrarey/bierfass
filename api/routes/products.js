@@ -48,10 +48,12 @@ router.post("/search", (req, res) => {
 });
 
 //One particular product by type
-router.get("/:type", (req, res) => {
+router.get("/style/:type", (req, res) => {
   Product.findAll({
     where: { type: req.params.type },
-  }).then((products) => res.send(products));
+  })
+    .then((products) => res.send(products))
+    .catch((err) => console.log(err));
 });
 
 //Add product as admin

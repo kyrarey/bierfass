@@ -23,7 +23,7 @@ import SendEditProduct from "./components/Account/Admin/SendEditProduct";
 import Address from "./components/Address/Address";
 import SendOrder from "./components/SendOrder/SendOrder";
 import Confirmation from "./components/Confirmation/Confirmation";
-import TypeSearch from "./components/Search/TypeSearch";
+import ProductType from "./components/ProductType/ProductType";
 
 function App() {
   return (
@@ -38,9 +38,9 @@ function App() {
             <Route path="/login" element={<Login />} />
             <Route path="/me" element={<Account />} />
             <Route path="/search" element={<Search />} />
-            {/* <Route path="/product/:type" element={<TypeSearch />} /> */}
             <Route path="/cart/:userId" element={<Cart />} />
             <Route path="/product/:productId" element={<Product />} />
+            <Route path="/product/style/:type" element={<ProductType />} />
             <Route path="/users" element={<Users />} />
             <Route path="/reviews" element={<Reviews />} />
             <Route path="/editUser" element={<EditUser />} />

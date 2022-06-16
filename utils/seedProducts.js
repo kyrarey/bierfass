@@ -160,7 +160,7 @@ const seedProducts = [
     origin: "Argentina",
     rating: 3,
     reviews: "La de Toretto",
-    type: "IPA",
+    type: "Ipa",
     alcoholPercentage: 7,
     size: 500,
     price: 430,

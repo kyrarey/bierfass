@@ -15,6 +15,7 @@ const Navbar = () => {
   let navigate = useNavigate();
   const [search, setSearch] = useState("");
   const { user, setUser, setProductSearch } = useGlobalContext();
+  const options = ["Amber", "Ipa", "Sin TACC", "Stout"];
 
   const usuarioStorage = !!localStorage.getItem("user")
     ? JSON.parse(localStorage.getItem("user"))
@@ -77,60 +78,100 @@ const Navbar = () => {
             <span className="navbar-toggler-icon"></span>
           </button>
           <div className="collapse navbar-collapse" id="navbarSupportedContent">
-            <ProductType />
-            <div className="navbar-nav mv-auto mb-2 mb-lg-0">
-              <form className="d-flex">
-                <input
-                  className="form-control me-2"
-                  type="search"
-                  size="50"
-                  placeholder="Buscar"
-                  aria-label="Search"
-                  onChange={(e) => setSearch(e.target.value)}
-                />
-                <button
-                  onClick={onClickHandler}
-                  className="btn btn-outline-light"
-                  type="submit"
+            <ul className="navbar-nav me-auto mb-2 mb-lg-0">
+              <li className="nav-item dropdown">
+                <a
+                  className="nav-link dropdown-toggle"
+                  id="navbarDropdown"
+                  role="button"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
                 >
-                  <SearchIcon />
-                </button>
-              </form>
-              <div className="navbar-nav ml-auto">
-                <div className="user-nav">
-                  {!usuarioStorage.firstName ? (
-                    <div>
-                      <Link to="/register">
-                        <button className="btn btn-outline-light" type="submit">
-                          Registrarse
-                        </button>
-                      </Link>
-                      <Link to="/login">
-                        <button className="btn btn-outline-light" type="submit">
-                          Iniciar sesión
-                        </button>
-                      </Link>
-                    </div>
-                  ) : (
-                    <div>
-                      <Link to={`/cart/${usuarioStorage.id}`}>
-                        <button className="btn btn-outline-light" type="submit">
-                          <ShoppingCartIcon />
-                        </button>
-                      </Link>
-                      <Link to="/me">
-                        <button className="btn btn-outline-light" type="submit">
-                          {usuarioStorage.firstName} <AccountCircleIcon />
-                        </button>
-                      </Link>
-                      <button
-                        className="btn btn-outline-light"
-                        onClick={handlelogout}
+                  Estilos
+                </a>
+                <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <li>
+                    {options.map((item) => (
+                      <Link
+                        to={`/product/style/${item}`}
+                        className="dropdown-item"
                       >
-                        logout
-                      </button>
-                    </div>
-                  )}
+                        <button type="button" class="btn btn-dark">
+                          {item}
+                        </button>
+                      </Link>
+                    ))}
+                  </li>
+                </ul>
+              </li>
+            </ul>
+            <div>
+              <div className="navbar-nav mv-auto mb-2 mb-lg-0">
+                <form className="d-flex">
+                  <input
+                    className="form-control me-2"
+                    type="search"
+                    size="50"
+                    placeholder="Buscar"
+                    aria-label="Search"
+                    onChange={(e) => setSearch(e.target.value)}
+                  />
+                  <button
+                    onClick={onClickHandler}
+                    className="btn btn-outline-light"
+                    type="submit"
+                  >
+                    <SearchIcon />
+                  </button>
+                </form>
+                <div className="navbar-nav ml-auto">
+                  <div className="user-nav">
+                    {!usuarioStorage.firstName ? (
+                      <div>
+                        <Link to="/register">
+                          <button
+                            className="btn btn-outline-light"
+                            type="submit"
+                          >
+                            Registrarse
+                          </button>
+                        </Link>
+                        <Link to="/login">
+                          <button
+                            className="btn btn-outline-light"
+                            type="submit"
+                          >
+                            Iniciar sesión
+                          </button>
+                        </Link>
+                      </div>
+                    ) : (
+                      <div>
+                        <Link to={`/cart/${usuarioStorage.id}`}>
+                          <button
+                            className="btn btn-outline-light"
+                            type="submit"
+                          >
+                            <ShoppingCartIcon />
+                          </button>
+                        </Link>
+                        <Link to="/me">
+                          <button
+                            className="btn btn-outline-light"
+                            type="submit"
+                          >
+                            {usuarioStorage.firstName} <AccountCircleIcon />
+                          </button>
+                        </Link>
+                        <button
+                          className="btn btn-outline-light"
+                          onClick={handlelogout}
+                        >
+                          logout
+                        </button>
+                      </div>
+                    )}
+                  </div>
                 </div>
               </div>
             </div>
