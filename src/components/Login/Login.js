@@ -1,14 +1,14 @@
-import React, { useRef, useState } from "react";
-import { useGlobalContext } from "../../context/globalUserContext";
-import "./Login.css";
-import axios from "axios";
-import { useNavigate } from "react-router-dom";
-import ReCAPTCHA from "react-google-recaptcha";
+import React, { useRef, useState } from 'react';
+import { useGlobalContext } from '../../context/globalUserContext';
+import './Login.css';
+import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
+import ReCAPTCHA from 'react-google-recaptcha';
 
 const Login = () => {
   const { user, setUser } = useGlobalContext();
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
   const captcha = useRef(null);
   const [captchaValue, setCaptchaValue] = useState(null);
 
@@ -22,21 +22,22 @@ const Login = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (captcha.current.getValue()) {
-      setCaptchaValue(true);
-    }
+    // if (captcha.current.getValue()) {
+    //   setCaptchaValue(true);
+    // }
+
     axios
-      .post("http://localhost:8000/api/users/login", {
+      .post('http://localhost:8000/api/users/login', {
         email: email,
         password: password,
       })
       .then((res) => {
         setUser(res.data);
-        localStorage.setItem("user", JSON.stringify(res.data));
-        navigate("/me");
+        localStorage.setItem('user', JSON.stringify(res.data));
+        navigate('/me');
       })
       .catch(() => {
-        alert("error");
+        alert('error');
       });
   };
 
@@ -95,7 +96,6 @@ const Login = () => {
               ¿No tenés cuenta?&nbsp;
               <a href="/register">Crear cuenta</a>
             </p>
-            
           </form>
         </div>
       </div>

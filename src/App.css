@@ -44,3 +44,17 @@
 .butonsAcount button {
   margin: 3px;
 }
+
+.imgUser {
+  max-width: 330px;
+  margin: 20px;
+  margin-top: 30px;
+}
+
+.imgUser img {
+  max-width: 225px;
+}
+
+.form-control {
+  width: 360px !important;
+}
