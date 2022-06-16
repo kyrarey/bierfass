@@ -21,23 +21,20 @@ router.post("/add", (req, res) => {
 
 //Delete product
 router.delete("/delete", (req, res) => {
-  console.log("entre", req.body.shoppingCartId);
+ 
   ShoppingCart.destroy({ where: { id: req.body.shoppingCartId } })
   .then((x) => {
-    console.log(x);
-   return res.sendStatus(202)
+   return res.sendStatus(204)
   }
   );
 });
+
+
 
 //Edit cuantity
 router.put("/edit/:shoppingCartId", function(req, res, next) {
   const { shoppingCartId } = req.params;
 
-  // const response = (resCart) => ({
-  //   idShop,
-  //   email: resCart.content,
-  // });
 
   ShoppingCart.update(
     {

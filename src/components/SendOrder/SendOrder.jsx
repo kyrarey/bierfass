@@ -11,6 +11,7 @@ const SendOrder = () => {
   const [changeQuantity, setQuantity] = useState("");
   const [idProduct, setIdProduct] = useState(0);
 
+
   const user = !!localStorage.getItem("user")
     ? JSON.parse(localStorage.getItem("user"))
     : {};
@@ -23,13 +24,13 @@ const SendOrder = () => {
     });
   }, []);
 
-//trae el carrito del usuario
+  //trae el carrito del usuario
   useEffect(() => {
     axios
       .get(`/api/cart/${user.id}`)
       .then((res) => res.data)
       .then((products) => setProduct(products));
-  }, [product]);
+  }, []);
 
   //suma el valor de los articulos
   let finalPrice = 0;
@@ -79,14 +80,17 @@ const SendOrder = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    axios.post('http://localhost:8000/api/mail/sendOrder', {
-      email: email,
-    }).then(() => {
-    alert("email de confirmación enviado")
-    }).catch(() => {
-      alert("error al enviar email")
-    }
-    )
+    axios
+      .post("http://localhost:8000/api/mail/sendOrder", {
+        email: email,
+      })
+      .then(() => {
+        alert("email de confirmación enviado");
+      })
+      .catch(() => {
+        alert("error al enviar email");
+      });
+
 
 
     axios
@@ -95,17 +99,17 @@ const SendOrder = () => {
         address: selectedAdress,
         payMethod: selectedPayMethod,
         userId: user.id,
+        finalPrice: finalPrice,
+        detail: product
       })
       .then(() => {
         alert("tu orden ha sido enviada exitosamente");
-        navigate("/confirmation")
-
+        navigate("/confirmation");
       })
       .catch(() => {
         alert("No pudimos enviar tu orden, intentalo mas tarde, por favor");
       });
   };
-
 
   return (
     <>
@@ -196,7 +200,7 @@ const SendOrder = () => {
                 id="exampleFormControlInput1"
                 placeholder="name@example.com"
                 value={email}
-                onChange = {(e) => setEmail(e.target.value)}
+                onChange={(e) => setEmail(e.target.value)}
               ></input>
             </div>
           </div>

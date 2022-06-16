@@ -22,9 +22,9 @@ const Login = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (captcha.current.getValue()) {
-      setCaptchaValue(true);
-    }
+    // if (captcha.current.getValue()) {
+    //   setCaptchaValue(true);
+    // }
     axios
       .post("http://localhost:8000/api/users/login", {
         email: email,

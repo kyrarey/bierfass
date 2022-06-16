@@ -7,10 +7,13 @@ const User = require("./Users");
 class OrderDetail extends Model {}
 
 OrderDetail.init({
+    productName:{
+        type: DataTypes.STRING
+    },
     quantity:{
         type: DataTypes.STRING
     },
-    total:{
+    price:{
         type: DataTypes.STRING
     },
 },{
@@ -18,10 +21,11 @@ OrderDetail.init({
     modelName: 'orderDetail'
 })
 
-OrderDetail.belongsTo(ShoppingHistory)
+
 OrderDetail.belongsTo(User)
+
 
 OrderDetail.belongsTo(Product)
 
 
-module.exports = ShoppingHistory
+module.exports = OrderDetail

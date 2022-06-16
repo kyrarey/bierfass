@@ -5,20 +5,24 @@ import { Link } from "react-router-dom";
 import "./Cart.css";
 import DeleteIcon from "@mui/icons-material/Delete";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
+import { logDOM } from "@testing-library/react";
 
 const Cart = () => {
   const [product, setProduct] = useState([]);
   const user = JSON.parse(localStorage.getItem("user"));
   const [changeQuantity, setQuantity] = useState("");
   const [idProduct, setIdProduct] = useState(0);
+  const [pastOrders, setPastOrders] = useState([]);
+  
 
   //trae todos los productos del carrito
   useEffect(() => {
     axios
-      .get(`/api/cart/${user.id}`)
+      .get(`http://localhost:8000/api/cart/${user.id}`)
       .then((res) => res.data)
       .then((products) => setProduct(products));
   }, [product]);
+
 
   //suma el valor de los articulos
   let finalPrice = 0;
@@ -58,6 +62,17 @@ const Cart = () => {
 
     e.target.reset();
   };
+
+  // Trae el historial de ordenes del usuario
+
+  useEffect(()=>{
+    axios
+    .get(`http://localhost:8000/api/shoppingHistory/history/${user.id}`)
+    .then((res) => res.data)
+    .then((history) => {setPastOrders(history)});
+  },[])
+
+
 
   return (
     <div className="container">
@@ -128,6 +143,44 @@ const Cart = () => {
                 <strong> Precio total : {finalPrice}$ </strong>{" "}
               </p>
             </div>
+          </div>
+        </div>
+      </div>
+      <div class="accordion accordion-flush" id="accordionFlushExample">
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="flush-headingTwo">
+            <button
+              class="accordion-button collapsed"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#flush-collapseTwo"
+              aria-expanded="false"
+              aria-controls="flush-collapseTwo"
+            >
+              Revisa tus ordenes pasadas:
+            </button>
+          </h2>
+          <div
+            id="flush-collapseTwo"
+            class="accordion-collapse collapse"
+            aria-labelledby="flush-headingTwo"
+            data-bs-parent="#accordionFlushExample"
+          >
+            { pastOrders.length != 0 ? ( pastOrders.map((onehistory)=>(
+            <div class="accordion-body">
+              Valor pagado: $ {onehistory.shoppingHistory.finalPrice}
+              <br></br>
+              Fecha de compra: {new Date(onehistory.createdAt).toLocaleDateString(
+                          'es-AR'
+                        )}
+              <br></br>
+              Metodo de pago : {onehistory.shoppingHistory.payMethod}
+              <br></br>
+              Direccion de envio : {onehistory.shoppingHistory.address}
+              <br></br>
+            </div>))
+            ): <p>No tienes ordenes en tu historial</p>
+            }
           </div>
         </div>
       </div>
