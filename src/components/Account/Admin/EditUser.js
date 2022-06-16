@@ -19,7 +19,7 @@ const EditUser = () => {
   return (
     <div>
       <h1 align="center">Que usuario desea editar?</h1>
-      <div class="row row-cols-1 row-cols-md-4 g-4">
+      <div align="center" class="row row-cols-1 row-cols-md-4 g-4">
         {alluser.map((card) => (
           <UserCard {...card} />
         ))}

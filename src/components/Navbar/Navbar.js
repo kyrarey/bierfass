@@ -1,24 +1,25 @@
-import axios from "axios";
-import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
-import { useGlobalContext } from "../../context/globalUserContext";
-import React from "react";
-import "./Navbar.css";
-import SearchIcon from "@mui/icons-material/Search";
-import SportsBarIcon from "@mui/icons-material/SportsBar";
-import AccountCircleIcon from "@mui/icons-material/AccountCircle";
-import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
-import { Link } from "react-router-dom";
-import ProductType from "../ProductType/ProductType";
+import axios from 'axios';
+import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { useGlobalContext } from '../../context/globalUserContext';
+import React from 'react';
+import './Navbar.css';
+import SearchIcon from '@mui/icons-material/Search';
+import SportsBarIcon from '@mui/icons-material/SportsBar';
+import AccountCircleIcon from '@mui/icons-material/AccountCircle';
+import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
+import AdminPanelSettingsIcon from '@mui/icons-material/AdminPanelSettings';
+import { Link } from 'react-router-dom';
+import ProductType from '../ProductType/ProductType';
 
 const Navbar = () => {
   let navigate = useNavigate();
-  const [search, setSearch] = useState("");
+  const [search, setSearch] = useState('');
   const { user, setUser, setProductSearch } = useGlobalContext();
-  const options = ["Amber", "Ipa", "Sin TACC", "Stout"];
+  const options = ['Amber', 'Ipa', 'Sin TACC', 'Stout'];
 
-  const usuarioStorage = !!localStorage.getItem("user")
-    ? JSON.parse(localStorage.getItem("user"))
+  const usuarioStorage = !!localStorage.getItem('user')
+    ? JSON.parse(localStorage.getItem('user'))
     : {};
 
   const onClickHandler = (e) => {
@@ -27,24 +28,24 @@ const Navbar = () => {
       .post(`http://localhost:8000/api/products/search`, { search })
       .then((data) => {
         setProductSearch(data.data);
-        navigate("/search");
+        navigate('/search');
       });
   };
 
   const handlelogout = (e) => {
     e.preventDefault();
 
-    axios.post("/api/users/logout").then((res) => {
+    axios.post('/api/users/logout').then((res) => {
       alert(`logged out`);
-      localStorage.removeItem("user");
+      localStorage.removeItem('user');
       setUser({});
-      navigate("/");
+      navigate('/');
     });
   };
 
   const onCLickHome = (e) => {
     e.preventDefault();
-    navigate("/");
+    navigate('/');
   };
 
   return (
@@ -169,6 +170,24 @@ const Navbar = () => {
                         >
                           logout
                         </button>
+                        {usuarioStorage.admin === true ? (
+                          <Link to={`/admin`}>
+                            <button>
+                              Admin <AdminPanelSettingsIcon />
+                            </button>
+                          </Link>
+                        ) : (
+                          ''
+                        )}
+
+                        <Link to="/me">
+                          <button
+                            className="btn btn-outline-light"
+                            type="submit"
+                          >
+                            {usuarioStorage.firstName} <AccountCircleIcon />
+                          </button>
+                        </Link>
                       </div>
                     )}
                   </div>

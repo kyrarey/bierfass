@@ -19,7 +19,7 @@ const UserCard = ({
   };
 
   return (
-    <div>
+    <div className="imgUser">
       <div class="col">
         <div align="center" class="card imgProd">
           <img src={profilePhoto} class="card-img-top" alt="..."></img>
