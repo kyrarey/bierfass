@@ -9,7 +9,7 @@ router.post('/sendOrder', (req, res) => {
     service: 'hotmail',
     auth: {
       user: 'maatias.92@hotmail.com',
-      pass: 'Boca1905',
+      pass: '',
     },
   });
 

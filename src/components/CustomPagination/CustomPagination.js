@@ -1,7 +1,7 @@
 import React from 'react';
 import './CustomPagination.css';
 const CustomPagination = ({ setPage, page }) => {
-  let arrPage = [1, 2, 3, 4, 5];
+  let arrPage = [1, 2, 3];
 
   const handlePageChange = (page) => {
     setPage(page);

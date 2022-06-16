@@ -128,7 +128,7 @@ const Register = () => {
               />
             </div>
 
-            <div class="form-group col-md-6 pb-3">
+            {/* <div class="form-group col-md-6 pb-3">
               <label for="confirmPassword" class="form-label">
                 Confirmá tu contraseña
               </label>
@@ -141,7 +141,7 @@ const Register = () => {
                 onChange={(e) => setConfPassword(e.target.value)}
                 required
               />
-            </div>
+            </div> */}
 
             <button type="submit" class="btn btn-dark">
               Registrate

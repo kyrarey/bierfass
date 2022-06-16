@@ -30,6 +30,7 @@ const ProductReview = () => {
         ) : (
           review.map((Onereview) => (
             <li>
+              {console.log(Onereview)}
               <div className="container">
                 <div class="row">
                   <div className="col-2">
