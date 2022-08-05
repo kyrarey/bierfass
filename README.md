@@ -4,7 +4,7 @@
 
 This project was done over the course of 2 weeks. \
 Made by Matias Goñi, Alejandra Ramos, Evangelina Fernández, Fabian López and me. \
-Called Bierfass, german for beer barrel, is an e-commerce with the purpose of selling beers, since we really liked them :beer:! 
+Called Bierfass, german for beer barrel, is an e-commerce with the purpose of selling beers, since we really like them :beer:! 
 
 ### Technologies
 <code><img width="10%" src="https://www.vectorlogo.zone/logos/nodejs/nodejs-horizontal.svg"></code>
